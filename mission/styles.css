@@ -70,3 +70,26 @@ hr {
   color: #666;
   font-size: 0.9rem;
 }
+
+.title {
+  font-family: Georgia, "Times New Roman", serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  color: #2a6ebb;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+}
+
+.card {
+  box-shadow: none;
+  border: 1px solid #ccc;
+}
+
+.footer-logo {
+  display: block;
+  margin: 24px auto 12px;
+  width: 180px;
+}
