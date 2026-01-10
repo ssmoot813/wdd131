@@ -51,3 +51,22 @@ hr {
 .content p {
   margin: 0 0 14px;
 }
+hr {
+  margin: 18px 0 22px;
+}
+
+.content ol {
+  margin: 12px 0 0 22px;
+  padding: 0;
+}
+
+.content li {
+  margin-bottom: 10px;
+}
+
+.footer {
+  margin-top: 28px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
