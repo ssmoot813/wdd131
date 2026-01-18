@@ -81,3 +81,12 @@ hr {
   margin: 0 auto 16px;
   width: 210px;
 }
+
+.page {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 60px 90px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
