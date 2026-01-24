@@ -26,7 +26,6 @@ main {
   background: transparent;
 }
 
-
 header {
   background-color: #2f7ed8;
   color: white;
@@ -65,12 +64,6 @@ header h1 {
 
 nav {
   display: none;
-}
-
-main {
-  background: transparent;
-  padding: 1rem;
-  text-align: center;
 }
 
 main h2 {
