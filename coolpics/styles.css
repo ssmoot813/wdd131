@@ -66,6 +66,25 @@ nav {
   display: none;
 }
 
+.site-nav.is-open {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.site-nav.is-open a {
+  color: white;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.site-nav.is-open a:hover {
+  outline: 1px solid rgba(255, 255, 255, 0.6);
+}
+
 main h2 {
   margin: 0.5rem 0 1rem;
 }
@@ -77,6 +96,10 @@ main h2 {
   justify-items: center;
 }
 
+.gallery figure {
+  margin: 0;
+}
+
 .gallery img {
   width: 220px;
   aspect-ratio: 1 / 1;
@@ -86,6 +109,7 @@ main h2 {
   border: 1px solid #999;
   padding: 0.4rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 footer {
@@ -94,6 +118,69 @@ footer {
   text-align: center;
   padding: 0.75rem;
 }
+
+dialog.viewer {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+
+  background: transparent;
+}
+
+dialog.viewer::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+dialog.viewer[open] {
+  display: grid;
+  place-items: center;
+}
+
+.viewer-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.viewer-content img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.close-viewer {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+
+  width: 32px;
+  height: 32px;
+
+  background: white;
+  border: 1px solid #333;
+
+  padding: 0;
+  box-sizing: border-box;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 30px;
+  text-align: center;
+
+  cursor: pointer;
+}
+
 
 @media (min-width: 700px) {
   .gallery {
@@ -126,5 +213,11 @@ footer {
 
   .gallery {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .viewer-content,
+  .viewer-content img {
+    max-width: 60vw;
+    max-height: 75vh;
   }
 }

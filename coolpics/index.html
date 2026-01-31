@@ -1,58 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cool Pics - Responsive Menu and Media Queries" />
-  <title>Cool Pics</title>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cool Pics - Responsive Menu and Modals" />
+    <title>Cool Pics</title>
 
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="styles.css" />
-  <script src="scripts.js" defer></script>
-</head>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="coolpics.js"></script>
+  </head>
 
-<body>
-  <header>
-    <h1>Cool Pics 📷</h1>
-    <p class="menu-label">Menu</p>
+  <body>
+    <header>
+      <h1>Cool Pics 📷</h1>
+      <p class="menu-label">Menu</p>
 
-    <button class="menu-btn" type="button" aria-label="Menu">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </button>
+      <button class="menu-btn" type="button" aria-label="Menu">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </button>
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">People</a>
-      <a href="#">Places</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+      <nav id="site-nav" class="site-nav">
+        <a href="#">Home</a>
+        <a href="#">People</a>
+        <a href="#">Places</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
 
-  <main>
-    <h2>Current Work</h2>
+    <main>
+      <h2>Current Work</h2>
 
-    <section class="gallery">
-      <img src="images/cool-pic.jpg" alt="Photo 1" />
-      <img src="images/cool-pic.jpg" alt="Photo 2" />
-      <img src="images/cool-pic.jpg" alt="Photo 3" />
-      <img src="images/cool-pic.jpg" alt="Photo 4" />
-      <img src="images/cool-pic.jpg" alt="Photo 5" />
-      <img src="images/cool-pic.jpg" alt="Photo 6" />
-      <img src="images/cool-pic.jpg" alt="Photo 7" />
-      <img src="images/cool-pic.jpg" alt="Photo 8" />
-      <img src="images/cool-pic.jpg" alt="Photo 9" />
-    </section>
-  </main>
+      <section class="gallery">
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 1" />
+        </figure>
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 2" />
+        </figure>
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 3" />
+        </figure>
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 4" />
+        </figure>
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 5" />
+        </figure>
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 6" />
+        </figure>
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 7" />
+        </figure>
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 8" />
+        </figure>
+        <figure>
+          <img src="images/cool-pic.jpg" data-full="images/cool-pic-full.jpg" alt="Photo 9" />
+        </figure>
+      </section>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Cool Pics</p>
-  </footer>
-</body>
-</html>
+      <div id="viewer-root"></div>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Cool Pics</p>
+    </footer>
+  </body>
+  </html>
