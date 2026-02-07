@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --line: #efb07a;
+    --red: #b1002d;
+    --text: #111;
+    --muted: #444;
+    --border: #000;
+}
+
+body {
+    margin: 0;
+    background: #fff;
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 8px;
+    padding: 8px 10px;
+    background: #111;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.skip-link:focus {
+    left: 8px;
+}
+
+.page {
+    min-height: 100vh;
+    display: grid;
+    place-items: start center;
+    padding: 60px 16px;
+}
+
+.frame {
+    width: min(860px, 100%);
+    border: 1px solid var(--border);
+    padding: 0;
+    background: #fff;
+}
+
+.site-header {
+    padding: 22px 28px 0;
+    text-align: center;
+}
+
+.site-title {
+    margin: 0 0 14px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2f1c33;
+}
+
+.nav-row {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0;
+}
+
+.site-nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 26px;
+    padding: 0 6px;
+}
+
+.site-nav a {
+    color: var(--red);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.site-nav a:hover {
+    text-decoration: underline;
+}
+
+.post {
+    padding: 40px 28px 18px;
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+}
+
+.meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--text);
+}
+
+.meta-item {
+    margin: 0 0 10px;
+}
+
+.stars {
+    color: goldenrod;
+    letter-spacing: 1px;
+}
+
+.content {
+    padding-top: 2px;
+}
+
+.book-title {
+    margin: 0 0 14px;
+    color: var(--red);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.cover {
+    display: block;
+    width: 220px;
+    height: auto;
+    margin: 10px auto 16px;
+}
+
+.blurb {
+    margin: 0;
+    font-size: 12px;
+    color: var(--text);
+    max-width: 360px;
+}
+
+.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 10px 0 12px;
+    text-align: center;
+}
+
+.author {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+@media (min-width: 800px) {
+    .post-grid {
+        grid-template-columns: 170px 1fr;
+        align-items: start;
+    }
+
+    .meta {
+        padding-right: 16px;
+        border-right: 1px solid var(--line);
+    }
+
+    .content {
+        padding-left: 22px;
+    }
+}
