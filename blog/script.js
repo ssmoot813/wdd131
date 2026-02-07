@@ -1,1 +1,4 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearSpan = document.getElementById("year");
+if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+}
