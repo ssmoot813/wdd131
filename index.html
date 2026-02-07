@@ -4,86 +4,390 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>WDD131 Assignment Portal</title>
-    <meta name="description" content="Assignment hub for WDD 131 projects." />
+    <title>WDD 131 Assignment Portal</title>
+    <meta name="description" content="Assignment hub for WDD 131 projects and practice files." />
+
     <style>
+        :root {
+            --bg: #0b1020;
+            --panel: rgba(255, 255, 255, 0.06);
+            --panel2: rgba(255, 255, 255, 0.10);
+            --text: #eaf0ff;
+            --muted: rgba(234, 240, 255, 0.75);
+            --border: rgba(234, 240, 255, 0.18);
+            --accent: #7aa7ff;
+            --accent2: #ffd36b;
+            --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: system-ui, Arial, sans-serif;
             margin: 0;
-            padding: 2rem;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
             line-height: 1.5;
-        }
-
-        header {
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        ul {
-            padding-left: 1.25rem;
-        }
-
-        li {
-            margin: 0.5rem 0;
+            color: var(--text);
+            background:
+                radial-gradient(900px 600px at 10% 10%, rgba(122, 167, 255, 0.25), transparent 60%),
+                radial-gradient(900px 600px at 90% 20%, rgba(255, 211, 107, 0.18), transparent 55%),
+                radial-gradient(1200px 800px at 50% 120%, rgba(122, 167, 255, 0.12), transparent 50%),
+                var(--bg);
+            min-height: 100vh;
         }
 
         a {
-            text-decoration: none;
+            color: inherit;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 10px;
+            padding: 10px 12px;
+            background: #111;
+            color: #fff;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            left: 12px;
+        }
+
+        header {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 42px 18px 18px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            letter-spacing: 0.2px;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: var(--muted);
+            max-width: 70ch;
+        }
+
+        .chips {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .chip {
+            font-size: 0.85rem;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 18px 48px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        @media (min-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+            }
         }
 
         .card {
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            padding: 1rem 1.25rem;
-            margin: 1rem 0;
+            background: linear-gradient(180deg, var(--panel2), var(--panel));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 18px;
+            overflow: hidden;
         }
 
-        .muted {
-            color: #555;
+        .card h2 {
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--muted);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(234, 240, 255, 0.14);
+            background: rgba(255, 255, 255, 0.04);
+            text-decoration: none;
+            transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+        }
+
+        .link:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(234, 240, 255, 0.22);
+        }
+
+        .link:focus-visible {
+            outline: 3px solid rgba(122, 167, 255, 0.85);
+            outline-offset: 3px;
+        }
+
+        .left {
+            display: grid;
+            gap: 2px;
+        }
+
+        .title {
+            font-weight: 650;
+            letter-spacing: 0.2px;
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .pill {
+            font-size: 0.8rem;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(122, 167, 255, 0.12);
+            border: 1px solid rgba(122, 167, 255, 0.35);
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .pill.warn {
+            background: rgba(255, 211, 107, 0.12);
+            border-color: rgba(255, 211, 107, 0.35);
+        }
+
+        .tip {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px dashed rgba(234, 240, 255, 0.25);
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 18px 18px 34px;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .small {
             font-size: 0.95rem;
         }
     </style>
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
     <header>
-        <h1>WDD 131 Assignment Portal</h1>
-        <p class="muted">Links to all projects and practice files for this semester.</p>
+        <div class="topbar">
+            <h1>WDD 131 Assignment Portal</h1>
+            <div class="chips" aria-label="Quick info">
+                <span class="chip">Repo: wdd131</span>
+                <span class="chip">Student: ssmoot813</span>
+            </div>
+        </div>
+
+        <p class="subtitle">
+            A single hub for all projects and practice files. Add new assignments by adding one more link below.
+        </p>
     </header>
 
-    <main>
-        <section class="card">
-            <h2>Prove Assignments</h2>
-            <ul>
-                <li><a href="blog/">Build a Blog (Part 1)</a></li>
-                <li><a href="coolpics/">Coolpics</a></li>
-                <li><a href="mission/">Mission Statement</a></li>
-            </ul>
-        </section>
+    <main id="main" class="container">
+        <div class="grid">
+            <section class="card" aria-label="Prove assignments">
+                <h2>
+                    Prove Assignments
+                    <span class="badge">Graded</span>
+                </h2>
 
-        <section class="card">
-            <h2>Ponder Activities</h2>
-            <ul>
-                <li><a href="ponder/dom.html">DOM Practice</a></li>
-                <li><a href="ponder/modal.html">Modal Practice</a></li>
-                <li><a href="ponder/responsive.html">Responsive Practice</a></li>
-                <li><a href="ponder/meta-css.html">Meta/CSS Practice</a></li>
-                <li><a href="ponder/movies.html">Movies Practice</a></li>
-                <li><a href="ponder/dom-theme.html">DOM Theme</a></li>
-            </ul>
-            <p class="muted">If any of these pages 404, the filename in your folder might be different—just match the
-                link to the real file.</p>
-        </section>
+                <ul>
+                    <li>
+                        <a class="link" href="blog/">
+                            <span class="left">
+                                <span class="title">Build a Blog (Part 1)</span>
+                                <span class="meta">CSS Grid + accessibility</span>
+                            </span>
+                            <span class="pill">/blog/</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="link" href="coolpics/">
+                            <span class="left">
+                                <span class="title">Coolpics</span>
+                                <span class="meta">Responsive menu + modal</span>
+                            </span>
+                            <span class="pill">/coolpics/</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="link" href="mission/">
+                            <span class="left">
+                                <span class="title">Mission Statement</span>
+                                <span class="meta">HTML/CSS fundamentals</span>
+                            </span>
+                            <span class="pill">/mission/</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tip">
+                    Tip: when iLearn asks for a project URL, submit the folder link (example: <strong>/blog/</strong>),
+                    not this hub.
+                </div>
+            </section>
+
+            <section class="card" aria-label="Ponder activities">
+                <h2>
+                    Ponder Activities
+                    <span class="badge">Practice</span>
+                </h2>
+
+                <ul>
+                    <li>
+                        <a class="link" href="ponder/dom.html">
+                            <span class="left">
+                                <span class="title">DOM Practice</span>
+                                <span class="meta">Selecting + creating elements</span>
+                            </span>
+                            <span class="pill warn">/ponder/dom.html</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="link" href="ponder/modal.html">
+                            <span class="left">
+                                <span class="title">Modal Practice</span>
+                                <span class="meta">Open/close interactions</span>
+                            </span>
+                            <span class="pill warn">/ponder/modal.html</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="link" href="ponder/responsive.html">
+                            <span class="left">
+                                <span class="title">Responsive Practice</span>
+                                <span class="meta">Media queries + layout</span>
+                            </span>
+                            <span class="pill warn">/ponder/responsive.html</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="link" href="ponder/meta-css.html">
+                            <span class="left">
+                                <span class="title">Meta &amp; CSS Practice</span>
+                                <span class="meta">Head tags + selectors</span>
+                            </span>
+                            <span class="pill warn">/ponder/meta-css.html</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="link" href="ponder/movies.html">
+                            <span class="left">
+                                <span class="title">Movies Practice</span>
+                                <span class="meta">Layout + styling review</span>
+                            </span>
+                            <span class="pill warn">/ponder/movies.html</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="link" href="ponder/dom-theme.html">
+                            <span class="left">
+                                <span class="title">DOM Theme</span>
+                                <span class="meta">Theme toggles + classes</span>
+                            </span>
+                            <span class="pill warn">/ponder/dom-theme.html</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tip">
+                    If any link 404s, double-check the exact filename inside <strong>/ponder/</strong> and update it
+                    here.
+                </div>
+            </section>
+        </div>
     </main>
+
+    <footer>
+        <span class="small">© <span id="year"></span> WDD 131</span>
+        <span class="small">GitHub Pages: <strong>/wdd131/</strong></span>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
