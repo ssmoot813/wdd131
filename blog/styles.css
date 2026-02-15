@@ -41,7 +41,6 @@ body {
 .frame {
     width: min(860px, 100%);
     border: 1px solid var(--border);
-    padding: 0;
     background: #fff;
 }
 
@@ -80,24 +79,34 @@ body {
     text-decoration: underline;
 }
 
+.posts {
+    padding: 18px 28px 8px;
+}
+
 .post {
-    padding: 40px 28px 18px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.post:last-child {
+    border-bottom: 0;
+    padding-bottom: 10px;
 }
 
 .post-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 26px;
+    gap: 18px;
 }
 
 .meta {
     text-align: right;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text);
 }
 
 .meta-item {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
 }
 
 .stars {
@@ -110,22 +119,22 @@ body {
 }
 
 .book-title {
-    margin: 0 0 14px;
+    margin: 0 0 10px;
     color: var(--red);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
 }
 
 .cover {
     display: block;
-    width: 220px;
+    width: 170px;
     height: auto;
-    margin: 10px auto 16px;
+    margin: 8px auto 14px;
 }
 
 .blurb {
     margin: 0;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text);
     max-width: 360px;
 }
@@ -144,8 +153,9 @@ body {
 
 @media (min-width: 800px) {
     .post-grid {
-        grid-template-columns: 170px 1fr;
+        grid-template-columns: 150px 1fr;
         align-items: start;
+        gap: 22px;
     }
 
     .meta {
@@ -154,6 +164,6 @@ body {
     }
 
     .content {
-        padding-left: 22px;
+        padding-left: 26px;
     }
 }
