@@ -84,7 +84,7 @@ body {
 }
 
 .post {
-    padding: 10px 0;
+    padding: 8px 0;
     border-bottom: 1px solid var(--line);
 }
 
@@ -106,7 +106,7 @@ body {
 }
 
 .meta-item {
-    margin: 0 0 8px;
+    margin: 0 0 6px;
 }
 
 .stars {
@@ -121,23 +121,23 @@ body {
 .book-title {
     margin: 0 0 10px;
     color: var(--red);
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .cover {
     display: block;
-    width: 150px;
+    width: 145px;
     height: auto;
-    margin: 6px auto 10px;
+    margin: 6px auto 8px;
 }
 
 .blurb {
     margin: 0;
     font-size: 11px;
     color: var(--text);
-    max-width: 300px;
+    max-width: 280px;
 }
 
 .site-footer {
