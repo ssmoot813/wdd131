@@ -1,249 +1,145 @@
-
-:root {
-    --page: #fff;
-    --card: #d9d9d9;
-    --text: #111;
-    --border: #a9a9a9;
-    --shadow: 0 22px 34px rgba(0, 0, 0, .30);
-    --radius: 26px;
-}
-
-* {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    background: var(--page);
-    color: var(--text);
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: #fff;
+    font-family: Georgia, "Times New Roman", serif;
 }
 
 .wrap {
-    width: 1120px;
-    max-width: calc(100% - 40px);
-    padding: 40px 0;
-}
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+    position: relative;
+    width: 1060px;
+    height: 718px;
+    margin: 0 auto;
 }
 
 .form-grid {
     position: relative;
     width: 100%;
-    height: 680px;
+    height: 100%;
 }
 
 .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    position: absolute;
+    background: #d6d6d6;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
 .card-front {
-    position: absolute;
-    top: 70px;
-    left: 40px;
-    width: 900px;
-    height: 360px;
-    padding: 34px 36px 28px;
+    left: 80px;
+    top: 60px;
+    width: 760px;
+    height: 330px;
+    padding: 42px 46px;
     z-index: 2;
-
-    display: grid;
-    grid-template-columns: 1fr 260px;
-    grid-template-rows: auto auto auto;
-    column-gap: 34px;
-    row-gap: 22px;
-}
-
-.total {
-    grid-column: 1 / 2;
-    grid-row: 1;
-    margin: 0;
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: 800;
-    font-size: 34px;
-    letter-spacing: .4px;
-}
-
-.total .label {
-    margin-right: 14px;
-}
-
-.brand {
-    grid-column: 2 / 3;
-    grid-row: 1;
-    justify-self: end;
-    align-self: start;
-    font-size: 28px;
-    line-height: 1;
-}
-
-.field {
-    display: grid;
-    gap: 10px;
-}
-
-label {
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: 800;
-    letter-spacing: .6px;
-    text-transform: uppercase;
-    font-size: 26px;
-}
-
-input {
-    background: #fff;
-    border: 2px solid #7d7d7d;
-    border-radius: 3px;
-    padding: 12px 14px;
-    font-size: 24px;
-    color: #111;
-}
-
-input::placeholder {
-    color: rgba(0, 0, 0, .55);
-}
-
-.field-number {
-    grid-column: 1 / 2;
-    grid-row: 2;
-}
-
-.field-holder {
-    grid-column: 1 / 2;
-    grid-row: 3;
-}
-
-.field-exp {
-    grid-column: 2 / 3;
-    grid-row: 3;
-    align-self: end;
-}
-
-.exp-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
 }
 
 .card-back {
-    position: absolute;
-    top: 185px;
-    left: 250px;
-    width: 900px;
+    left: 330px;
+    top: 150px;
+    width: 760px;
     height: 360px;
     z-index: 1;
-    padding: 0;
 }
 
 .magstripe {
     position: absolute;
-    top: 42px;
-    left: 120px;
-    width: 740px;
-    height: 92px;
-    background: #111;
-    border-radius: 14px;
+    left: 0;
+    top: 70px;
+    width: 100%;
+    height: 85px;
+    background: #0b0b0b;
+    border-radius: 16px;
+}
+
+.total {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    font-size: 30px;
+    margin: 0 0 28px 0;
+}
+
+.brand {
+    position: absolute;
+    right: 36px;
+    top: 30px;
+    font-size: 26px;
+}
+
+label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 18px 0 10px;
+}
+
+input {
+    font-family: system-ui, Arial, sans-serif;
+    font-size: 22px;
+    padding: 12px 14px;
+    border: 2px solid rgba(0, 0, 0, 0.35);
+    border-radius: 3px;
+    outline: none;
+    background: #fff;
+    color: #444;
+}
+
+.field-number input {
+    width: 360px;
+}
+
+.field-holder input {
+    width: 470px;
+}
+
+.field-exp {
+    position: absolute;
+    right: 46px;
+    bottom: 46px;
+}
+
+.exp-row {
+    display: flex;
+    gap: 14px;
+}
+
+#month,
+#year {
+    width: 78px;
+    text-align: left;
 }
 
 .field-cvc {
     position: absolute;
-    top: 185px;
-    left: 640px;
-    width: 220px;
+    right: 90px;
+    top: 190px;
+}
+
+.field-cvc label {
+    margin: 0 0 10px 0;
+    font-size: 28px;
 }
 
 .field-cvc input {
-    width: 220px;
+    width: 120px;
 }
 
 .submit {
     position: absolute;
-    right: 70px;
-    bottom: 70px;
-
-    width: 220px;
-    padding: 16px 18px;
-
+    right: 80px;
+    bottom: 50px;
+    font-size: 26px;
+    padding: 14px 44px;
+    border: 3px solid #2b2b2b;
+    border-radius: 12px;
     background: #fff;
-    border: 3px solid #4a4a4a;
-    border-radius: 14px;
-
-    font-size: 28px;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35);
     cursor: pointer;
-
-    box-shadow: 0 18px 26px rgba(0, 0, 0, .25);
-    z-index: 3;
 }
 
-.submit:focus-visible {
-    outline: 3px solid rgba(0, 0, 0, .5);
-    outline-offset: 4px;
-}
-
-@media (max-width: 980px) {
-    .form-grid {
-        height: auto;
-        display: grid;
-        gap: 18px;
-    }
-
-    .card-front,
-    .card-back,
-    .submit {
-        position: static;
-        width: 100%;
-        height: auto;
-    }
-
-    .card-front {
-        grid-template-columns: 1fr;
-    }
-
-    .brand {
-        grid-column: 1;
-        justify-self: start;
-    }
-
-    .field-exp {
-        grid-column: 1;
-    }
-
-    .card-back {
-        padding: 24px;
-    }
-
-    .magstripe {
-        position: static;
-        width: 100%;
-        height: 80px;
-        margin: 6px 0 18px;
-    }
-
-    .field-cvc {
-        position: static;
-        width: 260px;
-        margin-left: auto;
-    }
-
-    .field-cvc input {
-        width: 100%;
-    }
-
-    .submit {
-        justify-self: end;
-    }
+.front-message,
+.message {
+    display: none;
 }
