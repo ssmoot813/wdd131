@@ -5,9 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Credit Card Form</title>
+    <meta name="description" content="Credit Card Payment Form" />
 
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -15,8 +17,12 @@
         <h1 class="sr-only">Credit Card Payment Form</h1>
 
         <form class="form-grid" id="ccForm" novalidate>
+
             <section class="card card-front" aria-label="Card front">
-                <p class="total"><span class="label">TOTAL:</span> <span class="amount">$199</span></p>
+                <p class="total">
+                    <span class="label">TOTAL:</span>
+                    <span class="amount">$199</span>
+                </p>
 
                 <div class="brand" aria-hidden="true">💳</div>
 
@@ -34,14 +40,19 @@
 
                 <div class="field field-exp" id="cardExpiration">
                     <label id="expirationDate" for="month">EXPIRATION</label>
+
                     <div class="exp-row">
                         <input id="month" name="expMonth" type="text" placeholder="MM" inputmode="numeric" required
                             aria-labelledby="expirationDate" />
+
                         <input id="year" name="expYear" type="text" placeholder="YY" inputmode="numeric" required
                             aria-labelledby="expirationDate" />
                     </div>
                 </div>
+
+                <p id="frontMessage" class="front-message" aria-live="polite"></p>
             </section>
+
 
             <section class="card card-back" aria-label="Card back">
                 <div class="magstripe" aria-hidden="true"></div>
@@ -52,9 +63,11 @@
                 </div>
             </section>
 
+
             <button class="submit" type="submit">Submit</button>
+
         </form>
-        <p id="frontMessage" class="front-message" aria-live="polite"></p>
+
         <p id="message" class="message" aria-live="polite"></p>
     </main>
 </body>
