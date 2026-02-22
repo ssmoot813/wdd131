@@ -104,9 +104,6 @@ form.addEventListener("submit", (e) => {
         return;
     }
 
-    // Success feedback
     setStatus("✅ Payment accepted! Thanks — your form validated correctly.", true);
 
-    // Optional: reset form
-    // form.reset();
 });
