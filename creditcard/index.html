@@ -8,7 +8,7 @@
     <meta name="description" content="Credit Card Payment Form" />
 
     <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
 </head>
 
@@ -17,7 +17,6 @@
         <h1 class="sr-only">Credit Card Payment Form</h1>
 
         <form class="form-grid" id="ccForm" novalidate>
-
             <section class="card card-front" aria-label="Card front">
                 <p class="total">
                     <span class="label">TOTAL:</span>
@@ -29,7 +28,7 @@
                 <div class="field field-number">
                     <label for="cardNumber">CARD NUMBER</label>
                     <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number"
-                        placeholder="1234 5678 9101 1020" required />
+                        placeholder="1234 5678 9101 1020" required maxlength="19" pattern="[0-9 ]{13,19}" />
                 </div>
 
                 <div class="field field-holder">
@@ -39,33 +38,31 @@
                 </div>
 
                 <div class="field field-exp" id="cardExpiration">
-                    <label id="expirationDate" for="month">EXPIRATION</label>
+                    <label id="expirationDate">EXPIRATION</label>
 
                     <div class="exp-row">
                         <input id="month" name="expMonth" type="text" placeholder="MM" inputmode="numeric" required
-                            aria-labelledby="expirationDate" />
+                            aria-labelledby="expirationDate" maxlength="2" pattern="[0-9]{2}" />
 
                         <input id="year" name="expYear" type="text" placeholder="YY" inputmode="numeric" required
-                            aria-labelledby="expirationDate" />
+                            aria-labelledby="expirationDate" maxlength="2" pattern="[0-9]{2}" />
                     </div>
                 </div>
 
                 <p id="frontMessage" class="front-message" aria-live="polite"></p>
             </section>
 
-
             <section class="card card-back" aria-label="Card back">
                 <div class="magstripe" aria-hidden="true"></div>
 
                 <div class="field field-cvc">
                     <label for="cvc">CVC/CVV</label>
-                    <input id="cvc" name="cvc" type="text" placeholder="xxx" inputmode="numeric" required />
+                    <input id="cvc" name="cvc" type="text" placeholder="xxx" inputmode="numeric" required maxlength="4"
+                        pattern="[0-9]{3,4}" />
                 </div>
             </section>
 
-
             <button class="submit" type="submit">Submit</button>
-
         </form>
 
         <p id="message" class="message" aria-live="polite"></p>
