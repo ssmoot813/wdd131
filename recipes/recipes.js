@@ -327,11 +327,8 @@ function recipeTemplate(recipe) {
         <div class="recipe-tags">
           ${tagsTemplate(recipe.tags)}
         </div>
-
         <h2>${recipe.name}</h2>
-
         ${ratingTemplate(recipe.rating)}
-
         <p class="description">${recipe.description}</p>
       </div>
     </article>
@@ -364,8 +361,7 @@ function filterRecipes(query) {
 }
 
 function init() {
-    const randomRecipe = getRandomListEntry(recipes);
-    renderRecipes([randomRecipe]);
+    renderRecipes([getRandomListEntry(recipes)]);
 
     const searchForm = document.querySelector('#searchForm');
     const searchInput = document.querySelector('#searchInput');
@@ -377,12 +373,13 @@ function init() {
 
         if (searchTerm === '') {
             renderRecipes([getRandomListEntry(recipes)]);
+            searchInput.value = '';
             return;
         }
 
-        const filteredRecipes = filterRecipes(searchTerm);
-        renderRecipes(filteredRecipes);
+        renderRecipes(filterRecipes(searchTerm));
+        searchInput.value = '';
     });
 }
 
-init();
+document.addEventListener('DOMContentLoaded', init);
