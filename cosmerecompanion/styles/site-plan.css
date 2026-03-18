@@ -63,6 +63,11 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+.card img {
+    max-width: 250px;
+    margin-top: 1rem;
+}
+
 h2,
 h3 {
     font-family: "Cinzel", serif;
@@ -75,15 +80,6 @@ h2 {
     padding-bottom: 0.4rem;
 }
 
-.logo-placeholder {
-    margin-top: 1rem;
-    border: 2px dashed var(--secondary);
-    border-radius: 10px;
-    padding: 2rem 1rem;
-    text-align: center;
-    background-color: #f8f9fb;
-    color: var(--secondary);
-}
 
 .color-grid {
     display: grid;
