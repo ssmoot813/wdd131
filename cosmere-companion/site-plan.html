@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cosmere Companion Site Plan</title>
-    <meta name="description" content="Site plan for the Cosmere Companion personal web project.">
+    <meta name="description" content="Site plan for the Cosmere Companion personal web application.">
     <meta name="author" content="Sam Smoot">
     <link rel="stylesheet" href="styles/site-plan.css">
 
@@ -20,7 +20,7 @@
     <header>
         <div class="container">
             <h1>Site Plan</h1>
-            <p class="subtitle">WDD 131 Personal Web Project</p>
+            <p class="subtitle">WDD 131 Personal Web Application Plan</p>
         </div>
     </header>
 
@@ -33,11 +33,11 @@
                 Brandon Sanderson’s Cosmere universe. It is short, clear, and directly connected to the fantasy
                 book content the site will focus on.
             </p>
-            <p><strong>Optional domain idea:</strong> cosmerecompanion.com</p>
+            <p><strong>Suggested folder name:</strong> <code>cosmere-companion</code></p>
         </section>
 
         <section class="card">
-            <h2>Site Purpose</h2>
+            <h2>Purpose</h2>
             <p>
                 Cosmere Companion is a fan-focused website created to help readers learn about the books, worlds,
                 and magic systems found in Brandon Sanderson’s Cosmere. The site will organize important information
@@ -59,31 +59,38 @@
             <h2>Dynamic Elements</h2>
             <p>
                 JavaScript will be used to make the site interactive and organized. The main content will be stored
-                in arrays of objects that include data about books, worlds, and magic systems. JavaScript will then
-                generate cards on the page, filter content by category, and respond to user actions like button clicks
-                or search input.
+                in arrays of objects that include data about books, worlds, and magic systems. JavaScript will generate
+                cards on the page, filter content by category, and respond to user actions like button clicks,
+                navigation choices, or search input.
             </p>
             <p>
                 The site will use DOM interaction to select elements, update displayed content, and react to events.
-                It will include multiple functions, conditional logic, arrays, objects, and array methods such as
-                <code>forEach()</code>, <code>filter()</code>, and <code>map()</code>. For example, users may be able
-                to filter books by series, show only specific magic systems, or display more details when a card is
-                clicked.
+                It will include multiple functions, conditional logic, arrays, objects, ES Modules, and array methods
+                such as <code>forEach()</code>, <code>filter()</code>, and <code>map()</code>. I plan to separate my
+                JavaScript into modules, such as one module for data and another for rendering or filtering content,
+                so the code is easier to organize and maintain.
             </p>
         </section>
 
         <section class="card">
             <h2>Logo</h2>
             <p>
-                The logo will feature the site name, <strong>Cosmere Companion</strong>, with a fantasy-inspired style.
-                It may include a simple icon such as a star, book, or symbolic magical design to match the theme of
-                the Cosmere. The logo should feel clean, readable, and imaginative without being too cluttered.
+                The logo features the site name, <strong>Cosmere Companion</strong>, with a fantasy-inspired visual
+                style. It uses a magical book-and-star theme to match the atmosphere of the Cosmere while still being
+                readable and polished.
             </p>
-            <img src="images/cosmere-logo.png" alt="Cosmere Companion logo">
+            <img src="images/cosmere-companion-logo.png" alt="Cosmere Companion logo" class="plan-image">
         </section>
 
         <section class="card">
             <h2>Color Schema</h2>
+            
+            <p>
+                The primary text color will be a dark gray (#1f1f1f) to maintain strong readability
+                against light backgrounds while avoiding the harshness of pure black. Accent gold
+                (#D4A017) will be used sparingly to highlight important elements and calls to action.
+            </p>
+           
             <div class="color-grid">
                 <div class="color-box navy">
                     <p>#1B263B</p>
@@ -115,50 +122,54 @@
                 Cinzel gives the site a dramatic and fantasy-inspired look that works well for book and world-building
                 content.
             </p>
+
             <p><strong>Body Font:</strong> Open Sans, sans-serif</p>
             <p>
                 Open Sans is easy to read on both desktop and mobile screens, making it a good choice for paragraphs,
-                labels, buttons, and navigation.
+                labels, navigation, buttons, and general content.
             </p>
         </section>
 
         <section class="card">
             <h2>Content</h2>
-            <h3>Home Page</h3>
+
+            <h3>Home Page Content</h3>
             <p>
                 Welcome to Cosmere Companion, a guide for readers exploring Brandon Sanderson’s connected fantasy
-                universe.
-                Whether you are just starting with Mistborn or diving deep into The Stormlight Archive, this site will
-                help
-                you learn about the books, worlds, and magic systems of the Cosmere.
+                universe. Whether you are just starting with Mistborn or diving deep into The Stormlight Archive,
+                this site will help you learn about the books, worlds, and magic systems of the Cosmere.
+            </p>
+            <p>
+                The home page will introduce the site, highlight featured books or series, and provide quick ways
+                to explore important topics. It will include a hero section, an overview of the site, and featured
+                content cards to help users navigate.
             </p>
 
-            <h3>Featured Books Section</h3>
+            <h3>Child Page Content</h3>
             <p>
-                The site will highlight major Cosmere series, including Mistborn, The Stormlight Archive, Elantris,
-                Warbreaker, and Tress of the Emerald Sea. Each book or series card will include a title, a short
-                description, and a category or world.
+                The child pages will focus on specific content areas such as books, magic systems, or reading guides.
+                For example, a Books page will include series cards for Mistborn, The Stormlight Archive, Elantris,
+                Warbreaker, and Tress of the Emerald Sea. Each card will include a title, short description, world,
+                and reading relevance.
+            </p>
+            <p>
+                A Magic Systems page will explain systems such as Allomancy, Feruchemy, Hemalurgy, Surgebinding,
+                Awakening, and AonDor. A Reading Guide page will suggest where new readers should start based on
+                interests such as action, mystery, worldbuilding, or character-driven stories.
             </p>
 
-            <h3>Magic Systems Section</h3>
+            <h3>Images, Icons, and Graphics</h3>
             <p>
-                This section will explain important magic systems such as Allomancy, Feruchemy, Hemalurgy, Surgebinding,
-                Awakening, and AonDor. Each entry will summarize how the system works and which books it belongs to.
+                The site will include a logo, a hero image or banner, and fantasy-themed visuals related to books,
+                reading, stars, and magical symbols. These images will support the content and strengthen the visual
+                identity of the site.
             </p>
 
-            <h3>Reading Guide Section</h3>
+            <h3>Planned Data</h3>
             <p>
-                A beginner-friendly reading guide will help visitors choose a starting point. It may suggest books based
-                on
-                interests like action, mystery, worldbuilding, or character growth.
-            </p>
-
-            <h3>Images and Media</h3>
-            <p>
-                The site will include a logo, a hero image or banner, and fantasy-themed images related to reading,
-                books,
-                or symbolic artwork inspired by the Cosmere. Images will support the content and improve the visual
-                design.
+                The site will use JavaScript data structures to store information about books, worlds, and magic systems.
+                Each object may include properties such as title, category, description, series, and featured status.
+                This data will be used to build content cards dynamically on the page.
             </p>
         </section>
 
@@ -175,36 +186,21 @@
         <section class="card">
             <h2>Wireframes</h2>
 
-            <h3>Home Page Wireframe (Mobile)</h3>
-            <div class="wireframe">
-                <div class="wf-box">Header / Logo</div>
-                <div class="wf-box">Navigation</div>
-                <div class="wf-box large">Hero Image + Intro</div>
-                <div class="wf-box">Filter / Search</div>
-                <div class="wf-box">Featured Cards</div>
-                <div class="wf-box">Magic Systems Section</div>
-                <div class="wf-box">Footer</div>
-            </div>
+            <h3>Home Page Wireframe</h3>
+            <p>
+                This wireframe shows the layout for the home page, including a header, navigation, hero section,
+                featured content, and footer.
+            </p>
+            <img src="images/home-wireframe.png" alt="Home page wireframe for Cosmere Companion"
+                class="plan-image wireframe-image">
 
-            <h3>Child Page Wireframe (Desktop - Books Page Example)</h3>
-            <div class="wireframe desktop-wireframe">
-                <div class="wf-box">Header / Logo</div>
-                <div class="wf-box">Horizontal Navigation</div>
-                <div class="wf-box large">Hero Banner + Intro Text</div>
-                <div class="wf-row">
-                    <div class="wf-box half">Filter / Search Panel</div>
-                    <div class="wf-box half">Featured Content Grid</div>
-                </div>
-                <div class="wf-row">
-                    <div class="wf-box half">Books Section</div>
-                    <div class="wf-box half">Magic Systems Section</div>
-                </div>
-                <div class="wf-box">Footer</div>
-            </div>
-
-            <h3>Wireframe Image</h3>
-            <img src="images/wireframe.png" alt="Wireframe layout for Cosmere Companion site">
-
+            <h3>Child Page Wireframe</h3>
+            <p>
+                This wireframe shows the layout for a child page, such as the Books page or Magic Systems page,
+                with a header, navigation, content sections, and footer.
+            </p>
+            <img src="images/child-wireframe.png" alt="Child page wireframe for Cosmere Companion"
+                class="plan-image wireframe-image">
         </section>
     </main>
 
