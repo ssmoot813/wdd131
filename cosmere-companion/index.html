@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmere Companion | Home</title>
+    <meta name="description"
+        content="Cosmere Companion helps readers explore Brandon Sanderson's Cosmere through books, worlds, and reading recommendations.">
+    <meta name="author" content="Sam Smoot">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <script type="module" src="scripts/main.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="site-brand" aria-label="Cosmere Companion home">
+                <span class="logo-mark" aria-hidden="true">✦</span>
+                <div class="brand-text">
+                    <span class="site-title">Cosmere Companion</span>
+                    <span class="site-tagline">Books, worlds, and reading paths</span>
+                </div>
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav"
+                aria-label="Open navigation menu">
+                ☰
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="magic.html">Magic Systems</a></li>
+                    <li><a href="reading-guide.html">Reading Guide</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero section-panel">
+            <div class="container">
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="hero-glow"></div>
+                    <div class="hero-stars">
+                        <span>✦</span>
+                        <span>✧</span>
+                        <span>✦</span>
+                    </div>
+                </div>
+
+                <div class="hero-copy">
+                    <h1>Explore the Cosmere with confidence</h1>
+                    <p class="hero-intro">
+                        Cosmere Companion is a reader-friendly guide to Brandon Sanderson’s connected fantasy universe.
+                        It helps new readers decide where to begin and gives existing fans a simple way to compare
+                        books, worlds, and magic systems.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="books.html" class="button button-outline">Explore</a>
+                        <a href="#worlds-overview" class="button button-solid">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about section-panel">
+            <div class="container narrow-content">
+                <h2>About the Site</h2>
+                <p>
+                    The Cosmere includes multiple series that take place on different worlds but still connect as part
+                    of one larger universe. That makes it exciting, but it can also be confusing to understand how the
+                    books fit together.
+                </p>
+                <p>
+                    This site helps readers compare major entry points, learn which worlds belong to which stories, and
+                    find a starting point based on their interests.
+                </p>
+            </div>
+        </section>
+
+        <section class="worlds-overview section-panel" id="worlds-overview">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>How the worlds and books relate</h2>
+                    <p>
+                        Each major Cosmere story happens on its own world with a distinct magic system. This overview
+                        helps readers see those connections more clearly.
+                    </p>
+                </div>
+
+                <div class="worlds-grid" id="worlds-grid" aria-live="polite">
+                    <!-- JavaScript inserts world cards here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="featured section-panel">
+            <div class="container">
+                <h2>Featured Content</h2>
+                <div class="featured-grid" id="featured-books" aria-live="polite">
+                    <!-- JavaScript inserts featured cards here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="reading-guide section-panel" id="reading-guide">
+            <div class="container narrow-content">
+                <h2>Reading Guide</h2>
+                <p>
+                    Choose the kind of story you want, and the site will suggest a strong place to begin.
+                </p>
+
+                <div class="preference-buttons" role="group" aria-label="Reading guide options">
+                    <button class="preference-btn" data-choice="action">Action</button>
+                    <button class="preference-btn" data-choice="epic">Epic Fantasy</button>
+                    <button class="preference-btn" data-choice="shorter">Shorter Read</button>
+                    <button class="preference-btn" data-choice="mystery">Mystery</button>
+                </div>
+
+                <div class="recommendation-box" id="recommendation-box" aria-live="polite">
+                    <h3>Your Recommendation</h3>
+                    <p>Select an option to see a suggested starting point.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Footer Links</p>
+            <span aria-hidden="true">·</span>
+            <p>&copy; 2026 Sam Smoot</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmere Companion | Magic Systems</title>
+    <meta name="description"
+        content="Explore major Cosmere magic systems and compare how they work across different worlds.">
+    <meta name="author" content="Sam Smoot">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <script type="module" src="scripts/magic.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="site-brand" aria-label="Cosmere Companion home">
+                <span class="logo-mark" aria-hidden="true">✦</span>
+                <div class="brand-text">
+                    <span class="site-title">Cosmere Companion</span>
+                    <span class="site-tagline">Books, worlds, and reading paths</span>
+                </div>
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav"
+                aria-label="Open navigation menu">
+                ☰
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="magic.html" aria-current="page">Magic Systems</a></li>
+                    <li><a href="reading-guide.html">Reading Guide</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="breadcrumbs-bar">
+            <div class="container">
+                <p class="breadcrumbs">
+                    <a href="index.html">Home</a>
+                    <span aria-hidden="true">›</span>
+                    <span aria-current="page">Magic Systems</span>
+                </p>
+            </div>
+        </div>
+
+        <section class="page-title-panel">
+            <div class="container">
+                <h1>Magic Systems</h1>
+            </div>
+        </section>
+
+        <section class="books-main section-panel">
+            <div class="container books-layout">
+                <div class="books-content">
+                    <div class="books-intro-row">
+                        <div class="books-intro-image books-placeholder" aria-hidden="true">
+                            <span>✧</span>
+                        </div>
+
+                        <div class="books-intro-text">
+                            <h2>Introductory text and overview in this section.</h2>
+                            <p>
+                                One of the most interesting parts of the Cosmere is that each world has its own style
+                                of magic. These systems feel different from one another, but they all connect to the
+                                larger rules of the universe.
+                            </p>
+                            <p>
+                                This page helps readers compare major systems such as Allomancy, Surgebinding,
+                                Awakening, and AonDor.
+                            </p>
+                            <p>
+                                Select a card below to view more information about how each system works and where it
+                                appears.
+                            </p>
+                        </div>
+
+                        <aside class="books-sidebar card-sidebar">
+                            <h2>Sidebar</h2>
+
+                            <div class="sidebar-block">
+                                <h3>Related Links</h3>
+                                <ul>
+                                    <li><a href="books.html">Books</a></li>
+                                    <li><a href="reading-guide.html">Reading Guide</a></li>
+                                    <li><a href="#magic-details">Selected Magic Details</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="sidebar-block">
+                                <h3>Sidebar Content</h3>
+                                <p>
+                                    This page focuses on comparing how the major magic systems differ by world, style,
+                                    and reader appeal.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <section class="books-gallery-section">
+                        <h2 class="section-subheading">Magic Gallery</h2>
+                        <div class="books-gallery" id="magic-grid" aria-live="polite">
+                            <!-- JavaScript inserts cards here -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="details-section section-panel" id="magic-details">
+            <div class="container">
+                <div class="details-main" id="magic-details-panel" aria-live="polite">
+                    <h2>Selected Magic Details</h2>
+                    <p>Select a magic system card above to view more information.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Footer Links</p>
+            <span aria-hidden="true">·</span>
+            <p>&copy; 2026 Sam Smoot</p>
+        </div>
+    </footer>
+</body>
+
+</html>
