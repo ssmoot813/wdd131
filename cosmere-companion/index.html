@@ -8,6 +8,7 @@
     <meta name="description"
         content="Cosmere Companion helps readers explore Brandon Sanderson's Cosmere through books, worlds, and reading recommendations.">
     <meta name="author" content="Sam Smoot">
+
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +25,10 @@
 
     <header class="site-header">
         <div class="container header-inner">
+
             <a href="index.html" class="site-brand" aria-label="Cosmere Companion home">
-                <span class="logo-mark" aria-hidden="true">✦</span>
+                <img src="images/cosmere-companion-logo.png" alt="Cosmere Companion logo" class="site-logo">
+
                 <div class="brand-text">
                     <span class="site-title">Cosmere Companion</span>
                     <span class="site-tagline">Books, worlds, and reading paths</span>
@@ -40,17 +43,19 @@
             <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
                 <ul>
                     <li><a href="index.html" aria-current="page">Home</a></li>
-                    <li><a href="books.html">Books</a></li>
+                    <li><a href="books.html">Books & Reading Order</a></li>
                     <li><a href="magic.html">Magic Systems</a></li>
-                    <li><a href="reading-guide.html">Reading Guide</a></li>
                 </ul>
             </nav>
+
         </div>
     </header>
 
     <main id="main-content">
+
         <section class="hero section-panel">
             <div class="container">
+
                 <div class="hero-visual" aria-hidden="true">
                     <div class="hero-glow"></div>
                     <div class="hero-stars">
@@ -62,6 +67,7 @@
 
                 <div class="hero-copy">
                     <h1>Explore the Cosmere with confidence</h1>
+
                     <p class="hero-intro">
                         Cosmere Companion is a reader-friendly guide to Brandon Sanderson’s connected fantasy universe.
                         It helps new readers decide where to begin and gives existing fans a simple way to compare
@@ -69,10 +75,15 @@
                     </p>
 
                     <div class="hero-actions">
-                        <a href="books.html" class="button button-outline">Explore</a>
-                        <a href="#worlds-overview" class="button button-solid">Learn More</a>
+                        <a href="books.html" class="button button-outline">
+                            Explore the Books
+                        </a>
+                        <a href="#worlds-overview" class="button button-solid">
+                            Learn More
+                        </a>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -102,23 +113,23 @@
                 </div>
 
                 <div class="worlds-grid" id="worlds-grid" aria-live="polite">
-                    <!-- JavaScript inserts world cards here -->
                 </div>
             </div>
         </section>
 
         <section class="featured section-panel">
             <div class="container">
-                <h2>Featured Content</h2>
+                <h2>Featured Books</h2>
+
                 <div class="featured-grid" id="featured-books" aria-live="polite">
-                    <!-- JavaScript inserts featured cards here -->
                 </div>
             </div>
         </section>
 
-        <section class="reading-guide section-panel" id="reading-guide">
+        <section class="reading-guide section-panel">
             <div class="container narrow-content">
                 <h2>Reading Guide</h2>
+
                 <p>
                     Choose the kind of story you want, and the site will suggest a strong place to begin.
                 </p>
@@ -136,15 +147,21 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>Footer Links</p>
+            <p><a href="index.html">Home</a></p>
+            <span aria-hidden="true">·</span>
+            <p><a href="books.html">Books & Reading Order</a></p>
+            <span aria-hidden="true">·</span>
+            <p><a href="magic.html">Magic Systems</a></p>
             <span aria-hidden="true">·</span>
             <p>&copy; 2026 Sam Smoot</p>
         </div>
     </footer>
+
 </body>
 
 </html>

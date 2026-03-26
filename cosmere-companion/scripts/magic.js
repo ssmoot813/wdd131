@@ -20,6 +20,7 @@ function closeNav() {
 function createMagicCard(system) {
     const card = document.createElement("article");
     card.className = "book-card";
+    card.id = system.id;
 
     card.innerHTML = `
         <div class="card-top" aria-hidden="true">✧</div>
@@ -39,6 +40,7 @@ function createMagicCard(system) {
 
 function renderMagicSystems() {
     magicGrid.innerHTML = "";
+
     magicSystems.forEach((system) => {
         magicGrid.appendChild(createMagicCard(system));
     });
@@ -75,6 +77,17 @@ function handleGridClick(event) {
     updateDetails(detailsButton.dataset.id);
 }
 
+function loadMagicFromHash() {
+    const hashId = window.location.hash.replace("#", "");
+    if (!hashId) return false;
+
+    const matchingSystem = magicSystems.find((system) => system.id === hashId);
+    if (!matchingSystem) return false;
+
+    updateDetails(matchingSystem.id);
+    return true;
+}
+
 function initEvents() {
     navToggle.addEventListener("click", toggleNav);
 
@@ -93,8 +106,14 @@ function initEvents() {
 }
 
 function init() {
+    if (!magicGrid || !detailsPanel || !navToggle || !siteNav) return;
+
     renderMagicSystems();
-    updateDetails(magicSystems[0].id);
+
+    if (!loadMagicFromHash() && magicSystems.length > 0) {
+        updateDetails(magicSystems[0].id);
+    }
+
     initEvents();
 }
 

@@ -1,10 +1,14 @@
-import { books } from "./data.js";
+import { books, readingPaths } from "./data.js";
 
 const navToggle = document.querySelector("#nav-toggle");
 const siteNav = document.querySelector("#site-nav");
+
 const booksGrid = document.querySelector("#books-grid");
-const filterButtons = document.querySelectorAll(".filter-btn");
 const detailsPanel = document.querySelector("#book-details");
+
+const bookFilterButtons = document.querySelectorAll(".filter-btn[data-category]");
+const guideButtons = document.querySelectorAll(".guide-btn");
+const resultPanel = document.querySelector("#guide-result-panel");
 
 function toggleNav() {
     const isOpen = siteNav.classList.toggle("open");
@@ -96,19 +100,19 @@ function filterBooks(category) {
     renderBooks(filteredBooks);
 }
 
-function setActiveButton(activeButton) {
-    filterButtons.forEach((button) => {
+function setActiveBookFilter(activeButton) {
+    bookFilterButtons.forEach((button) => {
         button.classList.remove("active");
     });
 
     activeButton.classList.add("active");
 }
 
-function handleFilterClick(event) {
-    const button = event.target.closest(".filter-btn");
+function handleBookFilterClick(event) {
+    const button = event.target.closest(".filter-btn[data-category]");
     if (!button) return;
 
-    setActiveButton(button);
+    setActiveBookFilter(button);
     filterBooks(button.dataset.category);
 }
 
@@ -130,6 +134,41 @@ function loadBookFromHash() {
     return true;
 }
 
+function updateGuide(choice) {
+    const selectedPath = readingPaths.find((path) => path.id === choice);
+
+    if (!selectedPath) {
+        resultPanel.innerHTML = `
+            <h2>Recommended Starting Point</h2>
+            <p>Guide information could not be loaded.</p>
+        `;
+        return;
+    }
+
+    resultPanel.innerHTML = `
+        <div class="details-top" aria-hidden="true">✦</div>
+        <h2>${selectedPath.label}</h2>
+        <p><strong>Start With:</strong> ${selectedPath.startWith}</p>
+        <p>${selectedPath.reason}</p>
+    `;
+}
+
+function setActiveGuideButton(activeButton) {
+    guideButtons.forEach((button) => {
+        button.classList.remove("active");
+    });
+
+    activeButton.classList.add("active");
+}
+
+function handleGuideClick(event) {
+    const button = event.target.closest(".guide-btn");
+    if (!button) return;
+
+    setActiveGuideButton(button);
+    updateGuide(button.dataset.choice);
+}
+
 function initEvents() {
     navToggle.addEventListener("click", toggleNav);
 
@@ -138,8 +177,12 @@ function initEvents() {
         if (navLink) closeNav();
     });
 
-    filterButtons.forEach((button) => {
-        button.addEventListener("click", handleFilterClick);
+    bookFilterButtons.forEach((button) => {
+        button.addEventListener("click", handleBookFilterClick);
+    });
+
+    guideButtons.forEach((button) => {
+        button.addEventListener("click", handleGuideClick);
     });
 
     booksGrid.addEventListener("click", handleGridClick);
@@ -158,6 +201,7 @@ function init() {
         updateDetails(books[0].id);
     }
 
+    updateGuide("beginner");
     initEvents();
 }
 

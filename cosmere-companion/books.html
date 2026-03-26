@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmere Companion | Books</title>
+    <title>Cosmere Companion | Books & Reading Order</title>
     <meta name="description"
-        content="Browse Cosmere books and series, filter by reading style, and click a card to view more details.">
+        content="Browse Cosmere books, compare reading options, and find the best place to start based on your reading interests.">
     <meta name="author" content="Sam Smoot">
     <link rel="stylesheet" href="style.css">
 
@@ -25,7 +25,7 @@
     <header class="site-header">
         <div class="container header-inner">
             <a href="index.html" class="site-brand" aria-label="Cosmere Companion home">
-                <span class="logo-mark" aria-hidden="true">✦</span>
+                <img src="images/cosmere-companion-logo.png" alt="Cosmere Companion logo" class="site-logo">
                 <div class="brand-text">
                     <span class="site-title">Cosmere Companion</span>
                     <span class="site-tagline">Books, worlds, and reading paths</span>
@@ -40,9 +40,8 @@
             <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="books.html" aria-current="page">Books</a></li>
+                    <li><a href="books.html" aria-current="page">Books & Reading Order</a></li>
                     <li><a href="magic.html">Magic Systems</a></li>
-                    <li><a href="reading-guide.html">Reading Guide</a></li>
                 </ul>
             </nav>
         </div>
@@ -54,14 +53,20 @@
                 <p class="breadcrumbs">
                     <a href="index.html">Home</a>
                     <span aria-hidden="true">›</span>
-                    <span>Books</span>
+                    <span>Books & Reading Order</span>
                 </p>
             </div>
         </div>
 
         <section class="page-title-panel">
             <div class="container">
-                <h1>Books</h1>
+                <h1>Books & Reading Order</h1>
+            </div>
+        </section>
+
+        <section class="hero-image-section">
+            <div class="container">
+                <img src="images/cosmere-books-hero.png" alt="Cosmere books and reading journey overview" class="hero-image">
             </div>
         </section>
 
@@ -74,43 +79,46 @@
                         </div>
 
                         <div class="books-intro-text">
-                            <h2>Introductory text and overview in this section.</h2>
+                            <h2>Find the right place to begin</h2>
                             <p>
-                                This page uses a gallery layout to display major Cosmere books and series. Each card
-                                gives a short summary so readers can compare options quickly.
+                                The Cosmere includes several series and standalone novels that connect through a larger
+                                shared universe. That can make it exciting for fantasy readers, but it can also make it
+                                difficult to decide where to start.
                             </p>
                             <p>
-                                Click a card to load more details, including the world, magic system, and why that book
-                                may be a good place to start.
+                                This page helps readers compare major books and series, filter them by reading style,
+                                and explore which starting point best matches their interests.
                             </p>
                             <p>
-                                Use the filters below to narrow the gallery by reading style or reader level.
+                                Use the gallery below to compare books, then use the reading path buttons to get a
+                                recommendation based on the kind of story you want.
                             </p>
                         </div>
 
                         <aside class="books-sidebar card-sidebar">
-                            <h2>Sidebar</h2>
+                            <h2>Quick Links</h2>
 
                             <div class="sidebar-block">
-                                <h3>Related Links</h3>
+                                <h3>Explore More</h3>
                                 <ul>
                                     <li><a href="index.html#worlds-overview">Worlds Overview</a></li>
-                                    <li><a href="index.html#reading-guide">Reading Guide</a></li>
+                                    <li><a href="magic.html">Magic Systems</a></li>
                                     <li><a href="#book-details">Selected Book Details</a></li>
+                                    <li><a href="#reading-paths">Reading Path Recommendation</a></li>
                                 </ul>
                             </div>
 
                             <div class="sidebar-block">
-                                <h3>Sidebar Content</h3>
+                                <h3>Why This Page Helps</h3>
                                 <p>
-                                    This page is designed to help readers compare books visually and interactively while
-                                    still following the structure of the child page wireframe.
+                                    Some readers want a fast-paced introduction, while others want a long epic fantasy
+                                    experience. This page is designed to make those choices easier and clearer.
                                 </p>
                             </div>
                         </aside>
                     </div>
 
-                    <div class="filter-bar">
+                    <div class="filter-bar" role="group" aria-label="Book category filters">
                         <button class="filter-btn active" data-category="all">All</button>
                         <button class="filter-btn" data-category="beginner">Beginner Friendly</button>
                         <button class="filter-btn" data-category="action">Action</button>
@@ -122,7 +130,6 @@
                     <section class="books-gallery-section">
                         <h2 class="section-subheading">Book Gallery</h2>
                         <div class="books-gallery" id="books-grid" aria-live="polite">
-                            <!-- JavaScript inserts cards here -->
                         </div>
                     </section>
                 </div>
@@ -137,11 +144,38 @@
                 </div>
             </div>
         </section>
+
+        <section class="reading-guide section-panel" id="reading-paths">
+            <div class="container narrow-content">
+                <h2>Where Should You Start?</h2>
+                <p>
+                    Choose the kind of reading experience you want, and this guide will suggest a strong place to
+                    begin in the Cosmere.
+                </p>
+
+                <div class="filter-bar" role="group" aria-label="Reading guide options">
+                    <button class="guide-btn filter-btn active" data-choice="beginner">Best First Choice</button>
+                    <button class="guide-btn filter-btn" data-choice="action">Action</button>
+                    <button class="guide-btn filter-btn" data-choice="epic">Epic Fantasy</button>
+                    <button class="guide-btn filter-btn" data-choice="shorter">Shorter Read</button>
+                    <button class="guide-btn filter-btn" data-choice="mystery">Mystery</button>
+                </div>
+
+                <div class="details-main" id="guide-result-panel" aria-live="polite">
+                    <h2>Recommended Starting Point</h2>
+                    <p>Select a reading style above to see a suggested place to begin.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <p>Footer Links</p>
+            <p><a href="index.html">Home</a></p>
+            <span aria-hidden="true">·</span>
+            <p><a href="books.html">Books & Reading Order</a></p>
+            <span aria-hidden="true">·</span>
+            <p><a href="magic.html">Magic Systems</a></p>
             <span aria-hidden="true">·</span>
             <p>&copy; 2026 Sam Smoot</p>
         </div>
