@@ -8,7 +8,7 @@
     <meta name="description"
         content="Browse Cosmere books, compare reading options, and find the best place to start based on your reading interests.">
     <meta name="author" content="Sam Smoot">
-    
+
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-cc.png">
     <link rel="apple-touch-icon" href="images/favicon-cc.png">
 
@@ -79,6 +79,7 @@
         <section class="books-main section-panel">
             <div class="container books-layout">
                 <div class="books-content">
+
                     <div class="books-intro-row">
                         <div class="books-intro-image books-placeholder" aria-hidden="true">
                             <span>✦</span>
@@ -133,20 +134,18 @@
                         <button class="filter-btn" data-category="mystery">Mystery</button>
                     </div>
 
-                    <section class="books-gallery-section">
-                        <h2 class="section-subheading">Book Gallery</h2>
-                        <div class="books-gallery" id="books-grid" aria-live="polite">
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </section>
+                    <div class="books-display-layout">
+                        <section class="books-gallery-section">
+                            <h2 class="section-subheading">Book Gallery</h2>
+                            <div class="books-gallery" id="books-grid" aria-live="polite"></div>
+                        </section>
 
-        <section class="details-section section-panel">
-            <div class="container">
-                <div class="details-main" id="book-details" aria-live="polite">
-                    <h2>Selected Book Details</h2>
-                    <p>Select a book card above to view more information.</p>
+                        <aside class="book-details-panel details-main" id="book-details" aria-live="polite">
+                            <h2>Selected Book Details</h2>
+                            <p>Select a book card above to view more information.</p>
+                        </aside>
+                    </div>
+
                 </div>
             </div>
         </section>

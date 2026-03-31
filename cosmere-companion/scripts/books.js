@@ -26,18 +26,20 @@ function createBookCard(book) {
     const card = document.createElement("article");
     card.className = "book-card";
     card.id = book.id;
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", `View details for ${book.title}`);
 
     card.innerHTML = `
-        <div class="card-top" aria-hidden="true">✦</div>
-        <div class="card-content">
-            <h3>${book.title}</h3>
-            <p><strong>World:</strong> ${book.world}</p>
-            <div class="badge-row">
-                <span class="badge">${book.category}</span>
-                <span class="badge">${book.level}</span>
+        <div class="book-cover-frame">
+            <img src="images/${book.id}.jpg" alt="${book.title} cover" class="book-cover">
+            <div class="book-card-overlay">
+                <span class="book-card-label">View Details</span>
             </div>
-            <p>${book.description}</p>
-            <button class="details-btn" data-id="${book.id}">View Details</button>
+        </div>
+        <div class="book-card-body">
+            <h3>${book.title}</h3>
+            <p class="book-card-world">${book.world}</p>
         </div>
     `;
 
@@ -62,6 +64,25 @@ function renderBooks(bookList) {
     });
 }
 
+function clearSelectedCards() {
+    const cards = booksGrid.querySelectorAll(".book-card");
+
+    cards.forEach((card) => {
+        card.classList.remove("selected");
+        card.setAttribute("aria-pressed", "false");
+    });
+}
+
+function setSelectedCard(bookId) {
+    const cards = booksGrid.querySelectorAll(".book-card");
+
+    cards.forEach((card) => {
+        const isSelected = card.id === bookId;
+        card.classList.toggle("selected", isSelected);
+        card.setAttribute("aria-pressed", String(isSelected));
+    });
+}
+
 function updateDetails(bookId) {
     const selectedBook = books.find((book) => book.id === bookId);
 
@@ -70,27 +91,37 @@ function updateDetails(bookId) {
             <h2>Selected Book Details</h2>
             <p>Book details could not be loaded.</p>
         `;
+        clearSelectedCards();
         return;
     }
 
     detailsPanel.innerHTML = `
         <div class="details-top" aria-hidden="true">✦</div>
-        <h2>${selectedBook.title}</h2>
-        <p><strong>World:</strong> ${selectedBook.world}</p>
-        <div class="badge-row">
-            <span class="badge">${selectedBook.category}</span>
-            <span class="badge">${selectedBook.level}</span>
+        <div class="details-content">
+            <img src="images/${selectedBook.id}.jpg" alt="${selectedBook.title} cover" class="details-cover">
+            <div class="details-text">
+                <h2>${selectedBook.title}</h2>
+                <p><strong>World:</strong> ${selectedBook.world}</p>
+
+                <div class="badge-row">
+                    <span class="badge">${selectedBook.category}</span>
+                    <span class="badge">${selectedBook.level}</span>
+                </div>
+
+                <p><strong>Magic System:</strong> ${selectedBook.magic}</p>
+                <p><strong>Description:</strong> ${selectedBook.description}</p>
+                <p><strong>Why start here?</strong> ${selectedBook.whyStart}</p>
+            </div>
         </div>
-        <p><strong>Magic System:</strong> ${selectedBook.magic}</p>
-        <p><strong>Description:</strong> ${selectedBook.description}</p>
-        <p><strong>Why start here?</strong> ${selectedBook.whyStart}</p>
     `;
+
+    setSelectedCard(bookId);
 }
 
 function filterBooks(category) {
     if (category === "all") {
         renderBooks(books);
-        return;
+        return books;
     }
 
     const filteredBooks = books.filter((book) => {
@@ -98,6 +129,7 @@ function filterBooks(category) {
     });
 
     renderBooks(filteredBooks);
+    return filteredBooks;
 }
 
 function setActiveBookFilter(activeButton) {
@@ -113,14 +145,34 @@ function handleBookFilterClick(event) {
     if (!button) return;
 
     setActiveBookFilter(button);
-    filterBooks(button.dataset.category);
+    const filteredBooks = filterBooks(button.dataset.category);
+
+    if (filteredBooks.length > 0) {
+        updateDetails(filteredBooks[0].id);
+    } else {
+        detailsPanel.innerHTML = `
+            <h2>Selected Book Details</h2>
+            <p>No matching book is currently selected.</p>
+        `;
+        clearSelectedCards();
+    }
 }
 
 function handleGridClick(event) {
-    const detailsButton = event.target.closest(".details-btn");
-    if (!detailsButton) return;
+    const card = event.target.closest(".book-card");
+    if (!card) return;
 
-    updateDetails(detailsButton.dataset.id);
+    updateDetails(card.id);
+}
+
+function handleGridKeydown(event) {
+    const card = event.target.closest(".book-card");
+    if (!card) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        updateDetails(card.id);
+    }
 }
 
 function loadBookFromHash() {
@@ -188,6 +240,7 @@ function initEvents() {
     });
 
     booksGrid.addEventListener("click", handleGridClick);
+    booksGrid.addEventListener("keydown", handleGridKeydown);
 
     window.addEventListener("resize", () => {
         if (window.innerWidth >= 980) {
