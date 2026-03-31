@@ -19,7 +19,7 @@ function closeNav() {
 
 function createMagicCard(system) {
     const card = document.createElement("article");
-    card.className = "book-card";
+    card.className = "magic-card";
     card.id = system.id;
 
     card.innerHTML = `
@@ -93,7 +93,9 @@ function initEvents() {
 
     siteNav.addEventListener("click", (event) => {
         const navLink = event.target.closest("a");
-        if (navLink) closeNav();
+        if (navLink) {
+            closeNav();
+        }
     });
 
     magicGrid.addEventListener("click", handleGridClick);
@@ -103,10 +105,14 @@ function initEvents() {
             closeNav();
         }
     });
+
+    window.addEventListener("hashchange", loadMagicFromHash);
 }
 
 function init() {
-    if (!magicGrid || !detailsPanel || !navToggle || !siteNav) return;
+    if (!magicGrid || !detailsPanel || !navToggle || !siteNav) {
+        return;
+    }
 
     renderMagicSystems();
 

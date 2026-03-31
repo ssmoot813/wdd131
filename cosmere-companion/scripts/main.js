@@ -83,9 +83,19 @@ function updateRecommendation(choice) {
     `;
 }
 
+function setActivePreference(activeButton) {
+    preferenceButtons.forEach((button) => {
+        button.classList.remove("active");
+    });
+
+    activeButton.classList.add("active");
+}
+
 function handlePreferenceClick(event) {
     const button = event.target.closest(".preference-btn");
     if (!button) return;
+
+    setActivePreference(button);
     updateRecommendation(button.dataset.choice);
 }
 
@@ -94,7 +104,9 @@ function initEvents() {
 
     siteNav.addEventListener("click", (event) => {
         const navLink = event.target.closest("a");
-        if (navLink) closeNav();
+        if (navLink) {
+            closeNav();
+        }
     });
 
     preferenceButtons.forEach((button) => {
@@ -109,8 +121,18 @@ function initEvents() {
 }
 
 function init() {
+    if (!navToggle || !siteNav || !featuredContainer || !worldsContainer || !recommendationBox) {
+        return;
+    }
+
     renderWorlds();
     renderFeaturedBooks();
+    updateRecommendation("action");
+
+    if (preferenceButtons.length > 0) {
+        preferenceButtons[0].classList.add("active");
+    }
+
     initEvents();
 }
 

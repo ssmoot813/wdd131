@@ -174,7 +174,9 @@ function initEvents() {
 
     siteNav.addEventListener("click", (event) => {
         const navLink = event.target.closest("a");
-        if (navLink) closeNav();
+        if (navLink) {
+            closeNav();
+        }
     });
 
     bookFilterButtons.forEach((button) => {
@@ -192,16 +194,27 @@ function initEvents() {
             closeNav();
         }
     });
+
+    window.addEventListener("hashchange", loadBookFromHash);
 }
 
 function init() {
+    if (!navToggle || !siteNav || !booksGrid || !detailsPanel || !resultPanel) {
+        return;
+    }
+
     renderBooks(books);
 
-    if (!loadBookFromHash()) {
+    if (!loadBookFromHash() && books.length > 0) {
         updateDetails(books[0].id);
     }
 
     updateGuide("beginner");
+
+    if (guideButtons.length > 0) {
+        guideButtons[0].classList.add("active");
+    }
+
     initEvents();
 }
 
