@@ -39,7 +39,7 @@
             </a>
 
             <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav"
-                aria-label="Open navigation menu">
+                aria-label="Open navigation menu" type="button">
                 ☰
             </button>
 
@@ -74,7 +74,8 @@
                     <div class="page-hero-overlay">
                         <div class="page-hero-content">
                             <h1>Magic Systems</h1>
-                            <p>Discover how each world’s powers work and compare the unique systems that shape the Cosmere.</p>
+                            <p>Discover how each world’s powers work and compare the unique systems that shape the
+                                Cosmere.</p>
                         </div>
                     </div>
                 </div>
@@ -135,8 +136,8 @@
 
                     </div>
 
-                    <section class="books-gallery-section">
-                        <h2 class="section-subheading">Magic Systems</h2>
+                    <section class="books-gallery-section" aria-labelledby="magic-grid-heading">
+                        <h2 class="section-subheading" id="magic-grid-heading">Magic Systems</h2>
 
                         <div class="magic-grid" id="magic-grid" aria-live="polite">
                         </div>
@@ -148,8 +149,9 @@
 
         <section class="details-section section-panel" id="magic-details">
             <div class="container">
-                <div class="details-main" id="magic-details-panel" aria-live="polite">
-                    <h2>Selected Magic Details</h2>
+                <div class="details-main" id="magic-details-panel" aria-live="polite"
+                    aria-labelledby="magic-details-heading">
+                    <h2 id="magic-details-heading">Selected Magic Details</h2>
                     <p>Select a magic system card above to view more information.</p>
                 </div>
             </div>

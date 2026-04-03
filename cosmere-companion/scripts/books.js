@@ -29,6 +29,7 @@ function createBookCard(book) {
     card.tabIndex = 0;
     card.setAttribute("role", "button");
     card.setAttribute("aria-label", `View details for ${book.title}`);
+    card.setAttribute("aria-pressed", "false");
 
     card.innerHTML = `
         <div class="book-cover-frame">
@@ -88,7 +89,7 @@ function updateDetails(bookId) {
 
     if (!selectedBook) {
         detailsPanel.innerHTML = `
-            <h2>Selected Book Details</h2>
+            <h2 id="book-details-heading">Selected Book Details</h2>
             <p>Book details could not be loaded.</p>
         `;
         clearSelectedCards();
@@ -100,7 +101,7 @@ function updateDetails(bookId) {
         <div class="details-content">
             <img src="images/${selectedBook.id}.jpg" alt="${selectedBook.title} cover" class="details-cover">
             <div class="details-text">
-                <h2>${selectedBook.title}</h2>
+                <h2 id="book-details-heading">${selectedBook.title}</h2>
                 <p><strong>World:</strong> ${selectedBook.world}</p>
 
                 <div class="badge-row">
@@ -134,10 +135,10 @@ function filterBooks(category) {
 
 function setActiveBookFilter(activeButton) {
     bookFilterButtons.forEach((button) => {
-        button.classList.remove("active");
+        const isActive = button === activeButton;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
     });
-
-    activeButton.classList.add("active");
 }
 
 function handleBookFilterClick(event) {
@@ -151,7 +152,7 @@ function handleBookFilterClick(event) {
         updateDetails(filteredBooks[0].id);
     } else {
         detailsPanel.innerHTML = `
-            <h2>Selected Book Details</h2>
+            <h2 id="book-details-heading">Selected Book Details</h2>
             <p>No matching book is currently selected.</p>
         `;
         clearSelectedCards();
@@ -191,7 +192,7 @@ function updateGuide(choice) {
 
     if (!selectedPath) {
         resultPanel.innerHTML = `
-            <h2>Recommended Starting Point</h2>
+            <h2 id="guide-result-heading">Recommended Starting Point</h2>
             <p>Guide information could not be loaded.</p>
         `;
         return;
@@ -199,7 +200,7 @@ function updateGuide(choice) {
 
     resultPanel.innerHTML = `
         <div class="details-top" aria-hidden="true">✦</div>
-        <h2>${selectedPath.label}</h2>
+        <h2 id="guide-result-heading">${selectedPath.label}</h2>
         <p><strong>Start With:</strong> ${selectedPath.startWith}</p>
         <p>${selectedPath.reason}</p>
     `;
@@ -207,10 +208,10 @@ function updateGuide(choice) {
 
 function setActiveGuideButton(activeButton) {
     guideButtons.forEach((button) => {
-        button.classList.remove("active");
+        const isActive = button === activeButton;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
     });
-
-    activeButton.classList.add("active");
 }
 
 function handleGuideClick(event) {
@@ -265,7 +266,7 @@ function init() {
     updateGuide("beginner");
 
     if (guideButtons.length > 0) {
-        guideButtons[0].classList.add("active");
+        setActiveGuideButton(guideButtons[0]);
     }
 
     initEvents();

@@ -37,7 +37,7 @@
             </a>
 
             <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav"
-                aria-label="Open navigation menu">
+                aria-label="Open navigation menu" type="button">
                 ☰
             </button>
 
@@ -126,22 +126,28 @@
                     </div>
 
                     <div class="filter-bar" role="group" aria-label="Book category filters">
-                        <button class="filter-btn active" data-category="all">All</button>
-                        <button class="filter-btn" data-category="beginner">Beginner Friendly</button>
-                        <button class="filter-btn" data-category="action">Action</button>
-                        <button class="filter-btn" data-category="epic">Epic</button>
-                        <button class="filter-btn" data-category="standalone">Standalone</button>
-                        <button class="filter-btn" data-category="mystery">Mystery</button>
+                        <button class="filter-btn active" data-category="all" aria-pressed="true"
+                            type="button">All</button>
+                        <button class="filter-btn" data-category="beginner" aria-pressed="false" type="button">Beginner
+                            Friendly</button>
+                        <button class="filter-btn" data-category="action" aria-pressed="false"
+                            type="button">Action</button>
+                        <button class="filter-btn" data-category="epic" aria-pressed="false" type="button">Epic</button>
+                        <button class="filter-btn" data-category="standalone" aria-pressed="false"
+                            type="button">Standalone</button>
+                        <button class="filter-btn" data-category="mystery" aria-pressed="false"
+                            type="button">Mystery</button>
                     </div>
 
                     <div class="books-display-layout">
-                        <section class="books-gallery-section">
-                            <h2 class="section-subheading">Book Gallery</h2>
+                        <section class="books-gallery-section" aria-labelledby="book-gallery-heading">
+                            <h2 class="section-subheading" id="book-gallery-heading">Book Gallery</h2>
                             <div class="books-gallery" id="books-grid" aria-live="polite"></div>
                         </section>
 
-                        <aside class="book-details-panel details-main" id="book-details" aria-live="polite">
-                            <h2>Selected Book Details</h2>
+                        <aside class="book-details-panel details-main" id="book-details" aria-live="polite"
+                            aria-labelledby="book-details-heading">
+                            <h2 id="book-details-heading">Selected Book Details</h2>
                             <p>Select a book card above to view more information.</p>
                         </aside>
                     </div>
@@ -159,15 +165,21 @@
                 </p>
 
                 <div class="filter-bar" role="group" aria-label="Reading guide options">
-                    <button class="guide-btn filter-btn active" data-choice="beginner">Best First Choice</button>
-                    <button class="guide-btn filter-btn" data-choice="action">Action</button>
-                    <button class="guide-btn filter-btn" data-choice="epic">Epic Fantasy</button>
-                    <button class="guide-btn filter-btn" data-choice="shorter">Shorter Read</button>
-                    <button class="guide-btn filter-btn" data-choice="mystery">Mystery</button>
+                    <button class="guide-btn filter-btn active" data-choice="beginner" aria-pressed="true"
+                        type="button">Best First Choice</button>
+                    <button class="guide-btn filter-btn" data-choice="action" aria-pressed="false"
+                        type="button">Action</button>
+                    <button class="guide-btn filter-btn" data-choice="epic" aria-pressed="false" type="button">Epic
+                        Fantasy</button>
+                    <button class="guide-btn filter-btn" data-choice="shorter" aria-pressed="false"
+                        type="button">Shorter Read</button>
+                    <button class="guide-btn filter-btn" data-choice="mystery" aria-pressed="false"
+                        type="button">Mystery</button>
                 </div>
 
-                <div class="details-main" id="guide-result-panel" aria-live="polite">
-                    <h2>Recommended Starting Point</h2>
+                <div class="details-main" id="guide-result-panel" aria-live="polite"
+                    aria-labelledby="guide-result-heading">
+                    <h2 id="guide-result-heading">Recommended Starting Point</h2>
                     <p>Select a reading style above to see a suggested place to begin.</p>
                 </div>
             </div>

@@ -21,6 +21,10 @@ function createMagicCard(system) {
     const card = document.createElement("article");
     card.className = "magic-card";
     card.id = system.id;
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", `View details for ${system.name}`);
+    card.setAttribute("aria-pressed", "false");
 
     card.innerHTML = `
         <div class="card-top" aria-hidden="true">✧</div>
@@ -31,7 +35,7 @@ function createMagicCard(system) {
                 <span class="badge">${system.type}</span>
             </div>
             <p>${system.summary}</p>
-            <button class="details-btn" data-id="${system.id}">View Details</button>
+            <button class="details-btn" data-id="${system.id}" type="button">View Details</button>
         </div>
     `;
 
@@ -46,20 +50,40 @@ function renderMagicSystems() {
     });
 }
 
+function clearSelectedCards() {
+    const cards = magicGrid.querySelectorAll(".magic-card");
+
+    cards.forEach((card) => {
+        card.classList.remove("selected");
+        card.setAttribute("aria-pressed", "false");
+    });
+}
+
+function setSelectedCard(systemId) {
+    const cards = magicGrid.querySelectorAll(".magic-card");
+
+    cards.forEach((card) => {
+        const isSelected = card.id === systemId;
+        card.classList.toggle("selected", isSelected);
+        card.setAttribute("aria-pressed", String(isSelected));
+    });
+}
+
 function updateDetails(systemId) {
     const selectedSystem = magicSystems.find((system) => system.id === systemId);
 
     if (!selectedSystem) {
         detailsPanel.innerHTML = `
-            <h2>Selected Magic Details</h2>
+            <h2 id="magic-details-heading">Selected Magic Details</h2>
             <p>Magic system details could not be loaded.</p>
         `;
+        clearSelectedCards();
         return;
     }
 
     detailsPanel.innerHTML = `
         <div class="details-top" aria-hidden="true">✧</div>
-        <h2>${selectedSystem.name}</h2>
+        <h2 id="magic-details-heading">${selectedSystem.name}</h2>
         <p><strong>World:</strong> ${selectedSystem.world}</p>
         <p><strong>Appears In:</strong> ${selectedSystem.appearsIn}</p>
         <div class="badge-row">
@@ -68,13 +92,32 @@ function updateDetails(systemId) {
         <p><strong>Summary:</strong> ${selectedSystem.summary}</p>
         <p><strong>Why It Stands Out:</strong> ${selectedSystem.whyInteresting}</p>
     `;
+
+    setSelectedCard(systemId);
 }
 
 function handleGridClick(event) {
     const detailsButton = event.target.closest(".details-btn");
-    if (!detailsButton) return;
+    const card = event.target.closest(".magic-card");
 
-    updateDetails(detailsButton.dataset.id);
+    if (detailsButton) {
+        updateDetails(detailsButton.dataset.id);
+        return;
+    }
+
+    if (card) {
+        updateDetails(card.id);
+    }
+}
+
+function handleGridKeydown(event) {
+    const card = event.target.closest(".magic-card");
+    if (!card) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        updateDetails(card.id);
+    }
 }
 
 function loadMagicFromHash() {
@@ -99,6 +142,7 @@ function initEvents() {
     });
 
     magicGrid.addEventListener("click", handleGridClick);
+    magicGrid.addEventListener("keydown", handleGridKeydown);
 
     window.addEventListener("resize", () => {
         if (window.innerWidth >= 980) {
