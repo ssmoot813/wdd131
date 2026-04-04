@@ -62,7 +62,7 @@ function getRecommendation(choice) {
     }
 
     if (choice === "epic") {
-        return "Start with The Stormlight Archive if you want massive worldbuilding, deep lore, and a long-form fantasy experience.";
+        return "Start with The Stormlight Archive if you want massive worldbuilding, deep lore, and a long-form fantasy experience. This can then be followed up by The Sunlit Man if you want a more epic and high-stakes story with a familiar cast.";
     }
 
     if (choice === "shorter") {

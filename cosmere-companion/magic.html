@@ -121,7 +121,6 @@
                                 <ul>
                                     <li><a href="index.html#worlds-overview">Worlds Overview</a></li>
                                     <li><a href="books.html">Books & Reading Order</a></li>
-                                    <li><a href="#magic-details">Selected Magic Details</a></li>
                                 </ul>
                             </div>
 
@@ -147,15 +146,30 @@
             </div>
         </section>
 
-        <section class="details-section section-panel" id="magic-details">
-            <div class="container">
-                <div class="details-main" id="magic-details-panel" aria-live="polite"
-                    aria-labelledby="magic-details-heading">
-                    <h2 id="magic-details-heading">Selected Magic Details</h2>
-                    <p>Select a magic system card above to view more information.</p>
-                </div>
+<div class="magic-modal" id="magic-modal" aria-hidden="true" role="dialog" aria-labelledby="magic-modal-title">
+    <div class="magic-modal-backdrop" id="magic-modal-backdrop"></div>
+
+    <div class="magic-modal-content">
+        <button class="magic-modal-close" id="magic-modal-close" aria-label="Close magic details" type="button">
+            ✕
+        </button>
+
+        <div class="magic-modal-slide" id="magic-modal-slide">
+            <img id="magic-modal-image" src="" alt="">
+            <div class="magic-modal-text">
+                <p class="magic-modal-kicker" id="magic-modal-kicker"></p>
+                <h2 id="magic-modal-title"></h2>
+                <p id="magic-modal-description"></p>
             </div>
-        </section>
+        </div>
+
+        <div class="magic-modal-controls">
+            <button class="details-btn" id="magic-prev" type="button">Previous</button>
+            <span class="magic-modal-count" id="magic-modal-count">1 / 1</span>
+            <button class="details-btn" id="magic-next" type="button">Next</button>
+        </div>
+    </div>
+</div>
 
     </main>
 

@@ -3,12 +3,28 @@ import { magicSystems } from "./data.js";
 const navToggle = document.querySelector("#nav-toggle");
 const siteNav = document.querySelector("#site-nav");
 const magicGrid = document.querySelector("#magic-grid");
-const detailsPanel = document.querySelector("#magic-details-panel");
+
+const modal = document.querySelector("#magic-modal");
+const modalBackdrop = document.querySelector("#magic-modal-backdrop");
+const modalClose = document.querySelector("#magic-modal-close");
+const modalImage = document.querySelector("#magic-modal-image");
+const modalKicker = document.querySelector("#magic-modal-kicker");
+const modalTitle = document.querySelector("#magic-modal-title");
+const modalDescription = document.querySelector("#magic-modal-description");
+const modalCount = document.querySelector("#magic-modal-count");
+const prevBtn = document.querySelector("#magic-prev");
+const nextBtn = document.querySelector("#magic-next");
+
+let currentSystemIndex = 0;
+let currentSlideIndex = 0;
 
 function toggleNav() {
     const isOpen = siteNav.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
-    navToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    navToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
 }
 
 function closeNav() {
@@ -17,154 +33,155 @@ function closeNav() {
     navToggle.setAttribute("aria-label", "Open navigation menu");
 }
 
-function createMagicCard(system) {
+function createMagicCard(system, index) {
     const card = document.createElement("article");
     card.className = "magic-card";
     card.id = system.id;
-    card.tabIndex = 0;
-    card.setAttribute("role", "button");
-    card.setAttribute("aria-label", `View details for ${system.name}`);
-    card.setAttribute("aria-pressed", "false");
 
     card.innerHTML = `
-        <div class="card-top" aria-hidden="true">✧</div>
+        <div class="card-top">${system.name}</div>
         <div class="card-content">
-            <h3>${system.name}</h3>
+            <p><strong>Type:</strong> ${system.type}</p>
             <p><strong>World:</strong> ${system.world}</p>
-            <div class="badge-row">
-                <span class="badge">${system.type}</span>
-            </div>
-            <p>${system.summary}</p>
-            <button class="details-btn" data-id="${system.id}" type="button">View Details</button>
+            <button class="details-btn" type="button" data-index="${index}">
+                View Details
+            </button>
         </div>
     `;
 
     return card;
 }
 
-function renderMagicSystems() {
+function renderMagicCards() {
     magicGrid.innerHTML = "";
 
-    magicSystems.forEach((system) => {
-        magicGrid.appendChild(createMagicCard(system));
+    magicSystems.forEach((system, index) => {
+        const card = createMagicCard(system, index);
+        magicGrid.appendChild(card);
+    });
+
+    const detailButtons = magicGrid.querySelectorAll(".details-btn");
+
+    detailButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const systemIndex = Number(button.dataset.index);
+            openModal(systemIndex);
+        });
     });
 }
 
-function clearSelectedCards() {
-    const cards = magicGrid.querySelectorAll(".magic-card");
-
-    cards.forEach((card) => {
-        card.classList.remove("selected");
-        card.setAttribute("aria-pressed", "false");
-    });
-}
-
-function setSelectedCard(systemId) {
-    const cards = magicGrid.querySelectorAll(".magic-card");
-
-    cards.forEach((card) => {
-        const isSelected = card.id === systemId;
-        card.classList.toggle("selected", isSelected);
-        card.setAttribute("aria-pressed", String(isSelected));
-    });
-}
-
-function updateDetails(systemId) {
-    const selectedSystem = magicSystems.find((system) => system.id === systemId);
-
-    if (!selectedSystem) {
-        detailsPanel.innerHTML = `
-            <h2 id="magic-details-heading">Selected Magic Details</h2>
-            <p>Magic system details could not be loaded.</p>
-        `;
-        clearSelectedCards();
-        return;
+function getSlides(system) {
+    if (Array.isArray(system.slides) && system.slides.length > 0) {
+        return system.slides;
     }
 
-    detailsPanel.innerHTML = `
-        <div class="details-top" aria-hidden="true">✧</div>
-        <h2 id="magic-details-heading">${selectedSystem.name}</h2>
-        <p><strong>World:</strong> ${selectedSystem.world}</p>
-        <p><strong>Appears In:</strong> ${selectedSystem.appearsIn}</p>
-        <div class="badge-row">
-            <span class="badge">${selectedSystem.type}</span>
-        </div>
-        <p><strong>Summary:</strong> ${selectedSystem.summary}</p>
-        <p><strong>Why It Stands Out:</strong> ${selectedSystem.whyInteresting}</p>
-    `;
-
-    setSelectedCard(systemId);
+    return [
+        {
+            image: "",
+            kicker: `${system.world} • ${system.type}`,
+            title: system.name,
+            description: system.summary
+        },
+        {
+            image: "",
+            kicker: `Appears In ${system.appearsIn}`,
+            title: `Why ${system.name} Stands Out`,
+            description: system.whyInteresting
+        }
+    ];
 }
 
-function handleGridClick(event) {
-    const detailsButton = event.target.closest(".details-btn");
-    const card = event.target.closest(".magic-card");
+function updateModal() {
+    const system = magicSystems[currentSystemIndex];
+    const slides = getSlides(system);
+    const slide = slides[currentSlideIndex];
 
-    if (detailsButton) {
-        updateDetails(detailsButton.dataset.id);
-        return;
-    }
+    modalImage.src = slide.image || "";
+    modalImage.alt = slide.title || system.name;
+    modalKicker.textContent = slide.kicker || "";
+    modalTitle.textContent = slide.title || system.name;
+    modalDescription.textContent = slide.description || "";
+    modalCount.textContent = `${currentSlideIndex + 1} / ${slides.length}`;
 
-    if (card) {
-        updateDetails(card.id);
-    }
+    prevBtn.disabled = slides.length <= 1;
+    nextBtn.disabled = slides.length <= 1;
 }
 
-function handleGridKeydown(event) {
-    const card = event.target.closest(".magic-card");
-    if (!card) return;
+function openModal(systemIndex) {
+    currentSystemIndex = systemIndex;
+    currentSlideIndex = 0;
 
-    if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        updateDetails(card.id);
-    }
+    updateModal();
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
 }
 
-function loadMagicFromHash() {
-    const hashId = window.location.hash.replace("#", "");
-    if (!hashId) return false;
-
-    const matchingSystem = magicSystems.find((system) => system.id === hashId);
-    if (!matchingSystem) return false;
-
-    updateDetails(matchingSystem.id);
-    return true;
+function closeModal() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
 }
 
-function initEvents() {
+function nextSlide() {
+    const system = magicSystems[currentSystemIndex];
+    const slides = getSlides(system);
+
+    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+    updateModal();
+}
+
+function previousSlide() {
+    const system = magicSystems[currentSystemIndex];
+    const slides = getSlides(system);
+
+    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+    updateModal();
+}
+
+if (navToggle) {
     navToggle.addEventListener("click", toggleNav);
-
-    siteNav.addEventListener("click", (event) => {
-        const navLink = event.target.closest("a");
-        if (navLink) {
-            closeNav();
-        }
-    });
-
-    magicGrid.addEventListener("click", handleGridClick);
-    magicGrid.addEventListener("keydown", handleGridKeydown);
-
-    window.addEventListener("resize", () => {
-        if (window.innerWidth >= 980) {
-            closeNav();
-        }
-    });
-
-    window.addEventListener("hashchange", loadMagicFromHash);
 }
 
-function init() {
-    if (!magicGrid || !detailsPanel || !navToggle || !siteNav) {
-        return;
+window.addEventListener("resize", () => {
+    if (window.innerWidth >= 980) {
+        closeNav();
     }
+});
 
-    renderMagicSystems();
-
-    if (!loadMagicFromHash() && magicSystems.length > 0) {
-        updateDetails(magicSystems[0].id);
-    }
-
-    initEvents();
+if (modalClose) {
+    modalClose.addEventListener("click", closeModal);
 }
 
-init();
+if (modalBackdrop) {
+    modalBackdrop.addEventListener("click", closeModal);
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener("click", nextSlide);
+}
+
+if (prevBtn) {
+    prevBtn.addEventListener("click", previousSlide);
+}
+
+document.addEventListener("keydown", (event) => {
+    const modalIsOpen = modal && modal.classList.contains("open");
+
+    if (!modalIsOpen) return;
+
+    if (event.key === "Escape") {
+        closeModal();
+    }
+
+    if (event.key === "ArrowRight") {
+        nextSlide();
+    }
+
+    if (event.key === "ArrowLeft") {
+        previousSlide();
+    }
+});
+
+renderMagicCards();
