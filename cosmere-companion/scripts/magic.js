@@ -7,6 +7,8 @@ const magicGrid = document.querySelector("#magic-grid");
 const modal = document.querySelector("#magic-modal");
 const modalBackdrop = document.querySelector("#magic-modal-backdrop");
 const modalClose = document.querySelector("#magic-modal-close");
+const modalSlide = document.querySelector("#magic-modal-slide");
+const modalImageWrapper = document.querySelector(".magic-modal-slide-image");
 const modalImage = document.querySelector("#magic-modal-image");
 const modalKicker = document.querySelector("#magic-modal-kicker");
 const modalTitle = document.querySelector("#magic-modal-title");
@@ -17,6 +19,7 @@ const nextBtn = document.querySelector("#magic-next");
 
 let currentSystemIndex = 0;
 let currentSlideIndex = 0;
+let isAnimating = false;
 
 function toggleNav() {
     const isOpen = siteNav.classList.toggle("open");
@@ -96,8 +99,16 @@ function updateModal() {
     const slides = getSlides(system);
     const slide = slides[currentSlideIndex];
 
-    modalImage.src = slide.image || "";
-    modalImage.alt = slide.title || system.name;
+    if (slide.image) {
+        modalImage.src = slide.image;
+        modalImage.alt = slide.title || system.name;
+        modalImageWrapper.style.display = "flex";
+    } else {
+        modalImage.src = "";
+        modalImage.alt = "";
+        modalImageWrapper.style.display = "none";
+    }
+
     modalKicker.textContent = slide.kicker || "";
     modalTitle.textContent = slide.title || system.name;
     modalDescription.textContent = slide.description || "";
@@ -107,6 +118,26 @@ function updateModal() {
     nextBtn.disabled = slides.length <= 1;
 }
 
+function animateSlideChange(callback) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    modalSlide.classList.add("is-transitioning");
+
+    setTimeout(() => {
+        callback();
+
+        requestAnimationFrame(() => {
+            modalSlide.classList.remove("is-transitioning");
+        });
+
+        // unlock after full animation
+        setTimeout(() => {
+            isAnimating = false;
+        }, 300);
+
+    }, 150);
+}
 function openModal(systemIndex) {
     currentSystemIndex = systemIndex;
     currentSlideIndex = 0;
@@ -128,16 +159,20 @@ function nextSlide() {
     const system = magicSystems[currentSystemIndex];
     const slides = getSlides(system);
 
-    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-    updateModal();
+    animateSlideChange(() => {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        updateModal();
+    });
 }
 
 function previousSlide() {
     const system = magicSystems[currentSystemIndex];
     const slides = getSlides(system);
 
-    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-    updateModal();
+    animateSlideChange(() => {
+        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+        updateModal();
+    });
 }
 
 if (navToggle) {
@@ -169,7 +204,7 @@ if (prevBtn) {
 document.addEventListener("keydown", (event) => {
     const modalIsOpen = modal && modal.classList.contains("open");
 
-    if (!modalIsOpen) return;
+    if (!modalIsOpen || isAnimating) return;
 
     if (event.key === "Escape") {
         closeModal();
