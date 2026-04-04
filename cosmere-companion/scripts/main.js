@@ -8,75 +8,77 @@ const recommendationBox = document.querySelector("#recommendation-box");
 const preferenceButtons = document.querySelectorAll(".preference-btn");
 
 function toggleNav() {
+    if (!siteNav || !navToggle) return;
+
     const isOpen = siteNav.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
     navToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
 }
 
 function closeNav() {
+    if (!siteNav || !navToggle) return;
+
     siteNav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
     navToggle.setAttribute("aria-label", "Open navigation menu");
 }
 
 function renderWorlds() {
-    worldsContainer.innerHTML = "";
+    if (!worldsContainer) return;
 
-    worlds.forEach((world) => {
-        const card = document.createElement("article");
-        card.className = "world-card";
-        card.innerHTML = `
-            <h3>${world.name}</h3>
-            <p><strong>Books:</strong> ${world.books}</p>
-            <p><strong>Magic:</strong> ${world.magic}</p>
-            <p>${world.summary}</p>
-        `;
-        worldsContainer.appendChild(card);
-    });
+    const markup = worlds.map((world) => `
+        <article class="world-card">
+            <div class="card-content">
+                <h3>${world.name}</h3>
+                <p><strong>Books:</strong> ${world.books}</p>
+                <p><strong>Magic:</strong> ${world.magic}</p>
+                <p>${world.summary}</p>
+            </div>
+        </article>
+    `).join("");
+
+    worldsContainer.innerHTML = markup;
 }
 
 function renderFeaturedBooks() {
-    featuredContainer.innerHTML = "";
+    if (!featuredContainer) return;
 
-    const featuredBooks = books.filter((book) => book.featured);
+    const markup = books
+        .filter((book) => book.featured)
+        .map((book) => `
+            <article class="feature-card">
+                <div class="card-top" aria-hidden="true">✦</div>
+                <div class="card-content">
+                    <h3>${book.title}</h3>
+                    <p><strong>World:</strong> ${book.world}</p>
+                    <p>${book.description}</p>
+                    <a href="books.html#${book.id}" class="card-link">Read more about ${book.title}</a>
+                </div>
+            </article>
+        `)
+        .join("");
 
-    featuredBooks.forEach((book) => {
-        const card = document.createElement("article");
-        card.className = "feature-card";
-        card.innerHTML = `
-            <div class="card-top" aria-hidden="true">✦</div>
-            <div class="card-content">
-                <h3>${book.title}</h3>
-                <p><strong>World:</strong> ${book.world}</p>
-                <p>${book.description}</p>
-                <a href="books.html#${book.id}" class="card-link">Read more about ${book.title}</a>
-            </div>
-        `;
-        featuredContainer.appendChild(card);
-    });
+    featuredContainer.innerHTML = markup;
 }
 
 function getRecommendation(choice) {
-    if (choice === "action") {
-        return "Start with Mistborn. It is one of the clearest and most exciting entry points into the Cosmere.";
+    switch (choice) {
+        case "action":
+            return "Start with Mistborn. It is one of the clearest and most exciting entry points into the Cosmere.";
+        case "epic":
+            return "Start with The Stormlight Archive if you want massive worldbuilding, deep lore, and a long-form fantasy experience. This can then be followed up by The Sunlit Man if you want a more epic and high-stakes story with a familiar cast.";
+        case "shorter":
+            return "Start with Warbreaker or Tress of the Emerald Sea if you want a more approachable and self-contained first read.";
+        case "mystery":
+            return "Start with Elantris if you enjoy mystery, political tension, and rediscovering how a magic system works.";
+        default:
+            return "Explore the Books page to compare titles and choose what fits your style best.";
     }
-
-    if (choice === "epic") {
-        return "Start with The Stormlight Archive if you want massive worldbuilding, deep lore, and a long-form fantasy experience. This can then be followed up by The Sunlit Man if you want a more epic and high-stakes story with a familiar cast.";
-    }
-
-    if (choice === "shorter") {
-        return "Start with Warbreaker or Tress of the Emerald Sea if you want a more approachable and self-contained first read.";
-    }
-
-    if (choice === "mystery") {
-        return "Start with Elantris if you enjoy mystery, political tension, and rediscovering how a magic system works.";
-    }
-
-    return "Explore the Books page to compare titles and choose what fits your style best.";
 }
 
 function updateRecommendation(choice) {
+    if (!recommendationBox) return;
+
     recommendationBox.innerHTML = `
         <h3>Your Recommendation</h3>
         <p>${getRecommendation(choice)}</p>
@@ -84,6 +86,8 @@ function updateRecommendation(choice) {
 }
 
 function setActivePreference(activeButton) {
+    if (!activeButton || preferenceButtons.length === 0) return;
+
     preferenceButtons.forEach((button) => {
         button.classList.remove("active");
     });
@@ -99,7 +103,9 @@ function handlePreferenceClick(event) {
     updateRecommendation(button.dataset.choice);
 }
 
-function initEvents() {
+function initNavEvents() {
+    if (!navToggle || !siteNav) return;
+
     navToggle.addEventListener("click", toggleNav);
 
     siteNav.addEventListener("click", (event) => {
@@ -109,10 +115,6 @@ function initEvents() {
         }
     });
 
-    preferenceButtons.forEach((button) => {
-        button.addEventListener("click", handlePreferenceClick);
-    });
-
     window.addEventListener("resize", () => {
         if (window.innerWidth >= 980) {
             closeNav();
@@ -120,20 +122,28 @@ function initEvents() {
     });
 }
 
-function init() {
-    if (!navToggle || !siteNav || !featuredContainer || !worldsContainer || !recommendationBox) {
-        return;
-    }
+function initPreferenceEvents() {
+    if (preferenceButtons.length === 0) return;
 
+    preferenceButtons.forEach((button) => {
+        button.addEventListener("click", handlePreferenceClick);
+    });
+}
+
+function init() {
     renderWorlds();
     renderFeaturedBooks();
-    updateRecommendation("action");
+
+    if (recommendationBox) {
+        updateRecommendation("action");
+    }
 
     if (preferenceButtons.length > 0) {
         preferenceButtons[0].classList.add("active");
     }
 
-    initEvents();
+    initNavEvents();
+    initPreferenceEvents();
 }
 
 init();
