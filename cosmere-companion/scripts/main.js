@@ -49,7 +49,7 @@ function renderFeaturedBooks() {
                 <h3>${book.title}</h3>
                 <p><strong>World:</strong> ${book.world}</p>
                 <p>${book.description}</p>
-                <a href="books.html#${book.id}" class="card-link">Read More</a>
+                <a href="books.html#${book.id}" class="card-link">Read more about ${book.title}</a>
             </div>
         `;
         featuredContainer.appendChild(card);
