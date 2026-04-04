@@ -19,6 +19,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap"
         rel="stylesheet">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap"
+        as="style">
 
     <script type="module" src="scripts/main.js"></script>
 </head>
@@ -60,7 +63,10 @@
             <div class="container">
 
                 <div class="hero-image">
-                    <img src="images/cosmere-home-hero.webp"
+                    <img src="images/cosmere-home-hero-large.webp" srcset="
+                        images/cosmere-home-hero-small.webp 600w,
+                        images/cosmere-home-hero-large.webp 1800w
+                      " sizes="(max-width: 600px) 100vw, 600px"
                         alt="A stylized cosmic scene representing the interconnected worlds of the Cosmere" class="hero-img" width="1800"
                         height="1200" fetchpriority="high">
                 </div>
