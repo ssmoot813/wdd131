@@ -33,7 +33,7 @@ function createBookCard(book) {
 
     card.innerHTML = `
         <div class="book-cover-frame">
-            <img src="images/${book.id}.jpg" alt="${book.title} cover" class="book-cover">
+            <img src="images/${book.id}.webp" alt="${book.title} cover" class="book-cover">
             <div class="book-card-overlay">
                 <span class="book-card-label">View Details</span>
             </div>
@@ -99,7 +99,7 @@ function updateDetails(bookId) {
     detailsPanel.innerHTML = `
         <div class="details-top" aria-hidden="true">✦</div>
         <div class="details-content">
-            <img src="images/${selectedBook.id}.jpg" alt="${selectedBook.title} cover" class="details-cover">
+            <img src="images/${selectedBook.id}.webp" alt="${selectedBook.title} cover" class="details-cover">
             <div class="details-text">
                 <h2 id="book-details-heading">${selectedBook.title}</h2>
                 <p><strong>World:</strong> ${selectedBook.world}</p>

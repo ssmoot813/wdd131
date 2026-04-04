@@ -57,7 +57,7 @@ export const books = [
     {
         id: "sunlit",
         title: "The Sunlit Man",
-        world: "Canticle", // ✅ FIXED
+        world: "Canticle",
         category: "action",
         level: "advanced",
         magic: "Investiture-based powers and wider Cosmere connections",
@@ -99,7 +99,7 @@ export const worlds = [
         summary: "A unique setting built around dangerous seas and a more adventurous story tone."
     },
     {
-        name: "Canticle", // ✅ ADDED
+        name: "Canticle",
         books: "The Sunlit Man",
         magic: "Sunheart / Investiture-based powers",
         summary: "An extremely dangerous world with intense sunlight, constant motion, and survival-driven magic tied to its environment."
@@ -117,19 +117,19 @@ export const magicSystems = [
         whyInteresting: "It is one of the clearest and most structured magic systems in the Cosmere, which makes it very approachable for new readers.",
         slides: [
             {
-                image: "images/allomancy-slide-1.jpg",
+                image: "images/allomancy-slide-1.webp",
                 kicker: "Scadrial • Metal-Based",
                 title: "What Is Allomancy?",
                 description: "Allomancy is a magic system where users burn specific metals inside their bodies to access different powers."
             },
             {
-                image: "images/allomancy-slide-2.jpg",
+                image: "images/allomancy-slide-2.webp",
                 kicker: "How It Works",
                 title: "Different Metals, Different Powers",
                 description: "Each metal produces a specific effect, such as enhanced strength, emotional influence, or the ability to push and pull on nearby metals."
             },
             {
-                image: "images/allomancy-slide-3.jpg",
+                image: "images/allomancy-slide-3.webp",
                 kicker: "Why It Stands Out",
                 title: "A Clear and Structured System",
                 description: "Allomancy feels easy to understand because its rules are consistent, logical, and strongly tied to action scenes and strategy."
@@ -146,19 +146,19 @@ export const magicSystems = [
         whyInteresting: "It feels large in scale and deeply connected to Roshar’s history, making it exciting for readers who enjoy epic fantasy.",
         slides: [
             {
-                image: "images/surgebinding-slide-1.jpg",
+                image: "images/surgebinding-slide-1.webp",
                 kicker: "Roshar • Stormlight-Based",
                 title: "What Is Surgebinding?",
                 description: "Surgebinding is a powerful system that allows certain people to use Stormlight to manipulate natural forces like gravity, motion, and transformation."
             },
             {
-                image: "images/surgebinding-slide-2.jpg",
+                image: "images/surgebinding-slide-2.webp",
                 kicker: "How It Works",
                 title: "Power Through Oaths and Stormlight",
                 description: "Surgebinders gain abilities through bonds to spren and oaths, and they fuel those powers with Stormlight gathered from the gemstones in the world and from the huge storm that regularly hits Roshar."
             },
             {
-                image: "images/surgebinding-slide-3.jpg",
+                image: "images/surgebinding-slide-3.webp",
                 kicker: "Why It Stands Out",
                 title: "Epic in Scale",
                 description: "Surgebinding feels larger than life because it is tied to Roshar’s history, its conflicts, and some of the biggest moments in the Cosmere."
@@ -175,19 +175,19 @@ export const magicSystems = [
         whyInteresting: "It stands out because it feels creative, colorful, and different from more combat-focused systems.",
         slides: [
             {
-                image: "images/awakening-slide-1.jpg",
+                image: "images/awakening-slide-1.webp",
                 kicker: "Nalthis • Breath-Based",
                 title: "What Is Awakening?",
                 description: "Awakening is a magic system where people use BioChromatic Breath to bring objects to life and give them commands."
             },
             {
-                image: "images/awakening-slide-2.jpg",
+                image: "images/awakening-slide-2.webp",
                 kicker: "How It Works",
                 title: "Commands and Intent",
                 description: "The system depends on spoken commands, color, and intent, which allows the user to control the Awakened objects in unique ways."
             },
             {
-                image: "images/awakening-slide-3.jpg",
+                image: "images/awakening-slide-3.webp",
                 kicker: "Why It Stands Out",
                 title: "Creative and Unusual",
                 description: "Awakening feels memorable because it blends color, personality, and strategy into a system that can be both practical and surprising."
@@ -204,19 +204,19 @@ export const magicSystems = [
         whyInteresting: "It appeals to readers who enjoy mystery and systems that feel intellectual and discovery-based.",
         slides: [
             {
-                image: "images/aondor-slide-1.jpg",
+                image: "images/aondor-slide-1.webp",
                 kicker: "Sel • Symbol-Based",
                 title: "What Is AonDor?",
                 description: "AonDor is a magical system based on drawing symbols called Aons to produce different effects."
             },
             {
-                image: "images/aondor-slide-2.jpg",
+                image: "images/aondor-slide-2.webp",
                 kicker: "How It Works",
                 title: "Knowledge Shapes Power",
                 description: "The power of AonDor depends on understanding the right symbols and how they connect to geography, meaning, and intent."
             },
             {
-                image: "images/aondor-slide-3.jpg",
+                image: "images/aondor-slide-3.webp",
                 kicker: "Why It Stands Out",
                 title: "A Magic System Built on Discovery",
                 description: "AonDor feels especially interesting because it rewards curiosity and problem-solving rather than only raw strength."
@@ -233,19 +233,19 @@ export const magicSystems = [
         whyInteresting: "It feels unusual and imaginative, giving readers a very different type of fantasy setting.",
         slides: [
             {
-                image: "images/aether-spores-slide-1.jpg",
+                image: "images/aether-spores-slide-1.webp",
                 kicker: "Lumar • Spore-Based",
                 title: "What Are Aether Spores?",
                 description: "Aether spores are spores from the planet's various moons that react dramatically when they come into contact with water."
             },
             {
-                image: "images/aether-spores-slide-2.jpg",
+                image: "images/aether-spores-slide-2.webp",
                 kicker: "How It Works",
                 title: "Dangerous Seas and Strange Reactions",
                 description: "Different spores create different effects, and that shapes both the environment and the dangers people face on Lumar. The entire planet is covered by different seas of spores, which creates a unique setting and story tone."
             },
             {
-                image: "images/aether-spores-slide-3.jpg",
+                image: "images/aether-spores-slide-3.webp",
                 kicker: "Why It Stands Out",
                 title: "A Highly Imaginative Setting",
                 description: "This system stands out because it creates a fantasy world that feels adventurous, unusual, and visually distinct from other Cosmere stories."
@@ -262,19 +262,19 @@ export const magicSystems = [
         whyInteresting: "It stands out because it combines harsh worldbuilding with fast-paced action and strong connections to the wider Cosmere.",
         slides: [
             {
-                image: "images/sunheart-slide-1.jpg",
+                image: "images/sunheart-slide-1.webp",
                 kicker: "Canticle • Investiture-Based",
                 title: "What Are Sunheart Powers?",
                 description: "The magic on Canticle is tied to dangerous environmental conditions, stored power, and survival in an unforgiving world."
             },
             {
-                image: "images/sunheart-slide-2.jpg",
+                image: "images/sunheart-slide-2.webp",
                 kicker: "How It Works",
                 title: "Power Under Pressure",
                 description: "This system feels intense because the world itself is part of the danger, and magic is closely tied to movement, energy, and endurance."
             },
             {
-                image: "images/sunheart-slide-3.jpg",
+                image: "images/sunheart-slide-3.webp",
                 kicker: "Why It Stands Out",
                 title: "Fast-Paced and Deeply Connected",
                 description: "Sunheart powers stand out because they support a quick, high-stakes story while also connecting strongly to the larger Cosmere."
