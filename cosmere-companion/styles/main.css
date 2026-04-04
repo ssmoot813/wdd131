@@ -103,6 +103,28 @@ textarea:focus-visible,
     border-top: 1px solid #cfd5da;
 }
 
+.section-icon {
+    width: 120px;
+    height: 120px;
+    min-width: 120px;
+    min-height: 120px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #1B263B, #415A77);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 24px rgba(27, 38, 59, 0.22);
+    overflow: hidden;
+    padding: 18px;
+}
+
+.section-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .section-panel {
     background: #f5f6f7;
     padding: 3.5rem 0;
@@ -338,15 +360,16 @@ p {
 }
 
 .hero-img {
+    display: block;
     width: 100%;
-    max-height: 420px;
+    height: auto;
     object-fit: cover;
     border: 1px solid #d7d7d7;
     border-radius: var(--radius);
     box-shadow: var(--shadow-strong);
-    aspect-ratio: 16 / 9;
+    filter: contrast(1.05) saturate(1.05);
+    aspect-ratio: 3 / 2;
 }
-
 .hero-copy {
     max-width: 700px;
     margin: 0 auto;
@@ -526,6 +549,20 @@ p {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 1.35rem 1.35rem 1.5rem;
+}
+
+.world-card h3 {
+    margin-bottom: 0.85rem;
+}
+
+.world-card p {
+    margin-bottom: 0.85rem;
+    line-height: 1.65;
+}
+
+.world-card p:last-child {
+    margin-bottom: 0;
 }
 
 .world-card:hover,
@@ -773,7 +810,7 @@ p {
     }
 
     .books-intro-row {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 120px 1fr;
     }
 
     .books-sidebar {
@@ -807,7 +844,7 @@ p {
     }
 
     .books-intro-row {
-        grid-template-columns: 220px minmax(0, 2fr) minmax(260px, 1fr);
+        grid-template-columns: 120px minmax(0, 2fr) minmax(260px, 1fr);
     }
 
     .books-sidebar {

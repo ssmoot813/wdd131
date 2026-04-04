@@ -20,12 +20,13 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap"
         rel="stylesheet">
 
-    <script type="module" src="scripts/magic.js" defer></script>
+    <script type="module" src="scripts/magic.js"></script>
 </head>
 
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
+    <!-- HEADER -->
     <header class="site-header">
         <div class="container header-inner">
 
@@ -56,6 +57,7 @@
 
     <main id="main-content">
 
+        <!-- BREADCRUMBS -->
         <div class="breadcrumbs-bar">
             <div class="container">
                 <p class="breadcrumbs">
@@ -66,11 +68,14 @@
             </div>
         </div>
 
+        <!-- HERO -->
         <section class="hero-image-section">
             <div class="container">
                 <div class="page-hero">
                     <img src="images/cosmere-magic-hero.webp"
-                        alt="Representation of Cosmere magic systems across different worlds">
+                        alt="Representation of Cosmere magic systems across different worlds" width="1200" height="800"
+                        fetchpriority="high">
+
                     <div class="page-hero-overlay">
                         <div class="page-hero-content">
                             <h1>Magic Systems</h1>
@@ -82,16 +87,21 @@
             </div>
         </section>
 
+        <!-- MAIN SECTION -->
         <section class="books-main section-panel">
             <div class="container books-layout">
 
                 <div class="books-content">
+
+                    <!-- ✅ FIXED INTRO ROW -->
                     <div class="books-intro-row">
 
-                        <div class="books-intro-image books-placeholder" aria-hidden="true">
-                            <span>✧</span>
+                        <!-- ICON -->
+                        <div class="section-icon" aria-hidden="true">
+                            <img src="images/magic-icon.webp" alt="">
                         </div>
 
+                        <!-- TEXT -->
                         <div class="books-intro-text">
                             <h2>Understanding Cosmere Magic</h2>
 
@@ -113,6 +123,7 @@
                             </p>
                         </div>
 
+                        <!-- SIDEBAR -->
                         <aside class="books-sidebar card-sidebar">
                             <h2>Explore More</h2>
 
@@ -135,6 +146,7 @@
 
                     </div>
 
+                    <!-- MAGIC GRID -->
                     <section class="books-gallery-section" aria-labelledby="magic-grid-heading">
                         <h2 class="section-subheading" id="magic-grid-heading">Magic Systems</h2>
 
@@ -146,36 +158,43 @@
             </div>
         </section>
 
-<div class="magic-modal" id="magic-modal" aria-hidden="true" role="dialog" aria-labelledby="magic-modal-title">
-    <div class="magic-modal-backdrop" id="magic-modal-backdrop"></div>
+        <!-- MODAL -->
+        <div class="magic-modal" id="magic-modal" aria-hidden="true" role="dialog" aria-labelledby="magic-modal-title">
 
-    <div class="magic-modal-content">
-        <button class="magic-modal-close" id="magic-modal-close" aria-label="Close magic details" type="button">
-            ✕
-        </button>
+            <div class="magic-modal-backdrop" id="magic-modal-backdrop"></div>
 
-        <div class="magic-modal-slide" id="magic-modal-slide">
-            <div class="magic-modal-slide-image">
-                <img id="magic-modal-image" src="" alt="">
-            </div>
-        
-            <div class="magic-modal-text">
-                <p class="magic-modal-kicker" id="magic-modal-kicker"></p>
-                <h2 id="magic-modal-title"></h2>
-                <p id="magic-modal-description"></p>
+            <div class="magic-modal-content">
+
+                <button class="magic-modal-close" id="magic-modal-close" aria-label="Close magic details" type="button">
+                    ✕
+                </button>
+
+                <div class="magic-modal-slide" id="magic-modal-slide">
+
+                    <div class="magic-modal-slide-image">
+                        <img id="magic-modal-image" alt="" loading="lazy" decoding="async">
+                    </div>
+
+                    <div class="magic-modal-text">
+                        <p class="magic-modal-kicker" id="magic-modal-kicker"></p>
+                        <h2 id="magic-modal-title"></h2>
+                        <p id="magic-modal-description"></p>
+                    </div>
+
+                </div>
+
+                <div class="magic-modal-controls">
+                    <button class="details-btn" id="magic-prev" type="button">Previous</button>
+                    <span class="magic-modal-count" id="magic-modal-count">1 / 1</span>
+                    <button class="details-btn" id="magic-next" type="button">Next</button>
+                </div>
+
             </div>
         </div>
-
-        <div class="magic-modal-controls">
-            <button class="details-btn" id="magic-prev" type="button">Previous</button>
-            <span class="magic-modal-count" id="magic-modal-count">1 / 1</span>
-            <button class="details-btn" id="magic-next" type="button">Next</button>
-        </div>
-    </div>
-</div>
 
     </main>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <p><a href="index.html">Home</a></p>

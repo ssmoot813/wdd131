@@ -62,15 +62,6 @@ function renderMagicCards() {
         const card = createMagicCard(system, index);
         magicGrid.appendChild(card);
     });
-
-    const detailButtons = magicGrid.querySelectorAll(".details-btn");
-
-    detailButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const systemIndex = Number(button.dataset.index);
-            openModal(systemIndex);
-        });
-    });
 }
 
 function getSlides(system) {
@@ -100,11 +91,13 @@ function updateModal() {
     const slide = slides[currentSlideIndex];
 
     if (slide.image) {
+        modalImage.loading = "lazy";
+        modalImage.decoding = "async";
         modalImage.src = slide.image;
         modalImage.alt = slide.title || system.name;
         modalImageWrapper.style.display = "flex";
     } else {
-        modalImage.src = "";
+        modalImage.removeAttribute("src");
         modalImage.alt = "";
         modalImageWrapper.style.display = "none";
     }
@@ -126,18 +119,11 @@ function animateSlideChange(callback) {
 
     setTimeout(() => {
         callback();
-
-        requestAnimationFrame(() => {
-            modalSlide.classList.remove("is-transitioning");
-        });
-
-        // unlock after full animation
-        setTimeout(() => {
-            isAnimating = false;
-        }, 300);
-
-    }, 150);
+        modalSlide.classList.remove("is-transitioning");
+        isAnimating = false;
+    }, 180);
 }
+
 function openModal(systemIndex) {
     currentSystemIndex = systemIndex;
     currentSlideIndex = 0;
@@ -175,15 +161,25 @@ function previousSlide() {
     });
 }
 
-if (navToggle) {
+if (navToggle && siteNav) {
     navToggle.addEventListener("click", toggleNav);
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 980) {
+            closeNav();
+        }
+    });
 }
 
-window.addEventListener("resize", () => {
-    if (window.innerWidth >= 980) {
-        closeNav();
-    }
-});
+if (magicGrid) {
+    magicGrid.addEventListener("click", (event) => {
+        const button = event.target.closest(".details-btn");
+        if (!button) return;
+
+        const systemIndex = Number(button.dataset.index);
+        openModal(systemIndex);
+    });
+}
 
 if (modalClose) {
     modalClose.addEventListener("click", closeModal);
