@@ -72,6 +72,7 @@ function getRecommendation(choice) {
         case "mystery":
             return "Start with Elantris if you enjoy mystery, political tension, and rediscovering how a magic system works.";
         default:
+            console.warn(`getRecommendation: unrecognized choice "${choice}"`);
             return "Explore the Books page to compare titles and choose what fits your style best.";
     }
 }
@@ -115,10 +116,9 @@ function initNavEvents() {
         }
     });
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth >= 980) {
-            closeNav();
-        }
+    const navBreakpoint = window.matchMedia("(min-width: 980px)");
+    navBreakpoint.addEventListener("change", (e) => {
+        if (e.matches) closeNav();
     });
 }
 
@@ -134,12 +134,9 @@ function init() {
     renderWorlds();
     renderFeaturedBooks();
 
-    if (recommendationBox) {
-        updateRecommendation("action");
-    }
-
-    if (preferenceButtons.length > 0) {
+    if (recommendationBox && preferenceButtons.length > 0) {
         preferenceButtons[0].classList.add("active");
+        updateRecommendation(preferenceButtons[0].dataset.choice);
     }
 
     initNavEvents();
